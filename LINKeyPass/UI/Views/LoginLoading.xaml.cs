@@ -1,4 +1,3 @@
-using LIN.Shared.Responses;
 #if ANDROID
 using Android.Views;
 #endif
@@ -101,7 +100,7 @@ public partial class LoginLoading : ContentPage
             Platforms platform = MauiProgram.GetPlatform();
 
             // Inicio de sesion
-            var (Sesion, Response) = await LIN.Access.Sesion.LoginWith(User, Pass, platform);
+            var (Sesion, Response) = await LIN.Access.Auth.Session.LoginWith(User, Pass, platform);
 
 
             // Evaluacion
