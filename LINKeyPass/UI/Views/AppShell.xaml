@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="LIN.UI.Views.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Custom="clr-namespace:LIN.Controls.UI;assembly=LIN.Controls"
+    xmlns:local="clr-namespace:LIN.UI.Views">
+
+
+    <Shell.TitleView>
+
+        <OnPlatform x:TypeArguments="View">
+
+            <On Platform="WinUI">
+
+                <StackLayout
+                    x:Name="ju"
+                    Margin="{OnPlatform WinUI='10,10,10,0',
+                                        Android='0,10,10,0'}"
+                    x:FieldModifier="public"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+
+                    <Border
+                        HeightRequest="30"
+                        StrokeShape="RoundRectangle 25"
+                        WidthRequest="30">
+                        <Image
+                            x:Name="perfil"
+                            HeightRequest="20"
+                            Source="invitacion.png"
+                            VerticalOptions="Center"
+                            WidthRequest="20" />
+                    </Border>
+
+                    <Label
+                        x:Name="lbUser"
+                        Margin="5,0,0,0"
+                        FontFamily="QSB"
+                        FontSize="13"
+                        Text="User name"
+                        VerticalOptions="Center" />
+
+
+                </StackLayout>
+
+            </On>
+
+        </OnPlatform>
+    </Shell.TitleView>
+
+
+
+
+    <TabBar>
+
+        <ShellContent
+            Title="Inicio"
+            ContentTemplate="{DataTemplate local:Home}"
+            Icon="casa.png" />
+
+    </TabBar>
+
+    
+</Shell>
