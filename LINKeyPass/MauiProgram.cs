@@ -1,8 +1,9 @@
 ﻿global using CommunityToolkit.Maui;
-global using LIN.Access;
+global using LIN.Types.Auth.Enumerations;
 global using LIN.Controls;
-global using LIN.Shared.Enumerations;
-global using LIN.Shared.Models;
+global using LIN.Types.Enumerations;
+global using LIN.Types.Auth.Models;
+global using LIN.Types.Auth;
 using LIN.UI.Views;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
@@ -79,7 +80,7 @@ public static class MauiProgram
 
                         // Battery.Default.BatteryInfoChanged += Default_BatteryInfoChanged;
 
-                        if (Sesion.IsOpen)
+                        if (Session.IsOpen)
                             AppShell.Hub.Reconnect();
 
                     })
