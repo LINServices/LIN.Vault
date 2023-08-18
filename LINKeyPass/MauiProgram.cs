@@ -2,6 +2,7 @@
 global using LIN.Types.Auth.Enumerations;
 global using LIN.Controls;
 global using LIN.Types.Enumerations;
+global using LIN.Types.Responses;
 global using LIN.Types.Auth.Models;
 global using LIN.Types.Auth;
 using LIN.UI.Views;

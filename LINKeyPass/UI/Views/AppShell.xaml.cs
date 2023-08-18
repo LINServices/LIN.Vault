@@ -8,7 +8,7 @@ public partial class AppShell : Shell
 {
 
 
-    public static event EventHandler<PasskeyIntentDataModel>? OnReciveIntent;
+    public static event EventHandler<PasskeyModel>? OnReciveIntent;
 
 
     /// <summary>

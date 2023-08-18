@@ -100,7 +100,7 @@ public partial class LoginLoading : ContentPage
             Platforms platform = MauiProgram.GetPlatform();
 
             // Inicio de sesion
-            var (Sesion, Response) = await LIN.Access.Auth.Session.LoginWith(User, Pass, platform);
+            var (Sesion, Response) = await LIN.Access.Auth.Session.LoginWith(User, Pass);
 
 
             // Evaluacion
@@ -137,7 +137,7 @@ public partial class LoginLoading : ContentPage
             }
 
 
-            var modelo = Sesion.Informacion;
+            var modelo = Sesion.Account;
             modelo.Contraseña = Pass;
 
             await Database.SaveUser(new() { ID = modelo.ID, UserU = modelo.Usuario, Password = Pass});

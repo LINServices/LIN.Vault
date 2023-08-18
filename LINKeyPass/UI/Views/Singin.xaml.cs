@@ -1,6 +1,7 @@
-using LIN.Shared.Responses;
+using CommunityToolkit.Maui.Views;
 
 namespace LIN.UI.Views;
+
 
 public partial class Singin : ContentPage
 {
@@ -17,7 +18,7 @@ public partial class Singin : ContentPage
 
 
     /// <summary>
-    /// Evento cuando se escribe sobre los txts
+    /// Evento cuando se escribe sobre los textbox
     /// </summary>
     private void TxtChanged(object sender, TextChangedEventArgs e)
     {
@@ -52,7 +53,7 @@ public partial class Singin : ContentPage
         string name = txtName.Text ?? "";
         string pass = txtPassword.Text ?? "";
 
-        // Campos vacios
+        // Campos vacíos
         if (string.IsNullOrEmpty(user.Trim()) || string.IsNullOrEmpty(name.Trim()) || string.IsNullOrEmpty(pass.Trim()))
         {
             DisableChargeMode();
@@ -62,18 +63,18 @@ public partial class Singin : ContentPage
         }
 
 
-        // Contraseña Lenght
+        // Contraseña Length
         if (pass.Length < 4)
         {
             DisableChargeMode();
-            lbInfo.Text = "La contraseña debe de tener minimo 4 digitos";
+            lbInfo.Text = "La contraseña debe de tener mínimo 4 dígitos";
             lbInfo.Show();
             return;
         }
 
 
-        // Model
-        LIN.Shared.Models.UserDataModel modelo = new()
+
+        var account = new AccountModel
         {
             Nombre = name,
             Usuario = user,
@@ -81,8 +82,12 @@ public partial class Singin : ContentPage
             Perfil = await inpImg.GetBytes()
         };
 
-        // Creacion
-        var res = await LIN.Access.Controllers.User.CreateAsync(modelo);
+
+        var res = await Access.Auth.Controllers.Account.Create(account);
+
+
+
+
 
         // Respuesta
         switch (res.Response)
@@ -93,7 +98,7 @@ public partial class Singin : ContentPage
 
             case Responses.NotConnection:
                 DisableChargeMode();
-                lbInfo.Text = "Error conexion";
+                lbInfo.Text = "Error conexión";
                 lbInfo.IsVisible = true;
                 return;
 
@@ -111,48 +116,7 @@ public partial class Singin : ContentPage
         }
 
 
-        // Plataforma
-        Platforms platform = MauiProgram.GetPlatform();
-
-        // Inicio de sesion
-        var (Sesion, Response) = await Access.Sesion.LoginWith(user, pass, platform);
-
-
-        // Evaluacion
-        Login form;
-        switch (Response)
-        {
-
-            case Responses.Success:
-                break;
-
-            case Responses.NotExistAccount:
-                form = new();
-                form.Show();
-                this.Close();
-                return;
-
-            case Responses.InvalidPassword:
-                form = new();
-                form.Show();
-                this.Close();
-                return;
-
-
-            case Responses.NotConnection:
-                DisableChargeMode();
-                lbInfo.Text = "No hay conexion";
-                lbInfo.Show();
-                return;
-
-            // Hubo un error grave
-            default:
-                form = new();
-                form.Show();
-                this.Close();
-                return;
-
-        }
+        _ = await LIN.Access.Auth.Session.LoginWith(res.Token);
 
 
         // Abre la nueva ventana
