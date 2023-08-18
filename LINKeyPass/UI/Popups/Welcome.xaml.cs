@@ -7,9 +7,9 @@ namespace LIN.UI.Popups;
 public partial class Welcome : ContentPage
 {
 
-    PasskeyIntentDataModel modelo;
+    PassKeyModel modelo;
 
-    public Welcome(PasskeyIntentDataModel modelo)
+    public Welcome(PassKeyModel modelo)
     {
         InitializeComponent();
         this.modelo = modelo;
@@ -44,7 +44,7 @@ public partial class Welcome : ContentPage
                 try
                 {
                     modelo.Status = PassKeyStatus.Success;
-                    modelo.Token = Sesion.Instance.Token;
+                    modelo.Token = Access.Auth.Session.Instance.AccountToken;
                     AppShell.PassKeyHub.SendStatus(modelo);
                     this.Close();
                     return;

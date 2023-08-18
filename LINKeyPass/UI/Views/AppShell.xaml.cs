@@ -1,5 +1,4 @@
 ﻿using LIN.Services;
-using LIN.Shared.Models;
 
 namespace LIN.UI.Views;
 
@@ -8,7 +7,7 @@ public partial class AppShell : Shell
 {
 
 
-    public static event EventHandler<PasskeyModel>? OnReciveIntent;
+    public static event EventHandler<PassKeyModel>? OnReciveIntent;
 
 
     /// <summary>
@@ -21,14 +20,14 @@ public partial class AppShell : Shell
     /// <summary>
     /// Hub de Cuenta
     /// </summary>
-    public static readonly Access.Hubs.AccountHub Hub = new(BuildHub());
+    public static readonly Access.Auth.Hubs.AccountHub Hub = new(BuildHub());
 
 
 
     /// <summary>
     /// Hub de Cuenta
     /// </summary>
-    public static readonly Access.Hubs.PasskeyHub PassKeyHub = new(LIN.Access.Sesion.Instance.Informacion.Usuario, true);
+    public static readonly Access.Auth.Hubs.PassKeyHub PassKeyHub = new(LIN.Access.Auth.Session.Instance.Account.Usuario, true);
 
 
 
@@ -41,15 +40,15 @@ public partial class AppShell : Shell
         var model = new DeviceModel()
         {
             Name = MauiProgram.GetDeviceName(),
-            Cuenta = Sesion.Instance.Informacion.ID,
+            Cuenta = LIN.Access.Auth. Session.Instance.Account.ID,
             Modelo = DeviceInfo.Current.Model,
             BateryConected = BatteryService.IsChargin,
             BateryLevel = BatteryService.Percent,
             Manufacter = DeviceInfo.Current.Manufacturer,
             OsVersion = DeviceInfo.Current.VersionString,
             Platform = MauiProgram.GetPlatform(),
-            Token = Sesion.Instance.Token,
-            App = LINApps.Admin
+            Token = LIN.Access.Auth.Session.Instance.AccountToken,
+            App = Applications.Admin
         };
 
 
@@ -117,7 +116,7 @@ public partial class AppShell : Shell
         PassKeyHub.OnRecieveIntentAdmin += PassKeyHub_OnRecieveIntentAdmin;
     }
 
-    private void PassKeyHub_OnRecieveIntentAdmin(object? sender, PasskeyIntentDataModel e)
+    private void PassKeyHub_OnRecieveIntentAdmin(object? sender, PassKeyModel e)
     {
         this.Dispatcher.DispatchAsync(() =>
         {

@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.Types", "..\..\Tipos\LI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.Access.Auth", "..\..\AccesoAPI\LIN.Access.Auth\LIN.Access.Auth.csproj", "{BD7FF662-6564-4B79-B094-E00D101AFC27}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.Modules", "..\..\Tipos\LIN.Modules\LIN.Modules.csproj", "{6F1BB3FA-0461-4252-A536-F554F4B58053}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Build|Any CPU = Build|Any CPU
@@ -61,6 +63,12 @@ Global
 		{BD7FF662-6564-4B79-B094-E00D101AFC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD7FF662-6564-4B79-B094-E00D101AFC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD7FF662-6564-4B79-B094-E00D101AFC27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F1BB3FA-0461-4252-A536-F554F4B58053}.Build|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1BB3FA-0461-4252-A536-F554F4B58053}.Build|Any CPU.Build.0 = Debug|Any CPU
+		{6F1BB3FA-0461-4252-A536-F554F4B58053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1BB3FA-0461-4252-A536-F554F4B58053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1BB3FA-0461-4252-A536-F554F4B58053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1BB3FA-0461-4252-A536-F554F4B58053}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

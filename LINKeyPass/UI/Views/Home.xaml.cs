@@ -7,7 +7,7 @@ public partial class Home : ContentPage
     /// <summary>
     /// Lista de intentos
     /// </summary>
-    private List<PasskeyIntentDataModel> Intentos = new();
+    private List<PassKeyModel> Intentos = new();
 
 
 
@@ -28,7 +28,7 @@ public partial class Home : ContentPage
 
     }
 
-    private void AppShell_OnReciveIntent(object? sender, PasskeyIntentDataModel e)
+    private void AppShell_OnReciveIntent(object? sender, PassKeyModel e)
     {
         new Popups.Welcome(e).Show();
     }
@@ -36,7 +36,7 @@ public partial class Home : ContentPage
 
     private void SuscribeToHub()
     {
-        AppShell.Hub.OnReceiveNotification += Hub_OnReceiveNotification;
+       // AppShell.Hub.OnReceiveNotification += Hub_OnReceiveNotification;
     }
 
     private void Hub_OnReceiveNotification(object? sender, string e)
@@ -56,7 +56,7 @@ public partial class Home : ContentPage
         AppShell.ActualPage = this;
         try
         {
-            AppShell.SetImage(ImageEncoder.Decode(Sesion.Instance.Informacion.Perfil));
+            AppShell.SetImage(ImageEncoder.Decode(Access.Auth. Session.Instance.Account.Perfil));
         }
         catch
         {
@@ -125,15 +125,15 @@ public partial class Home : ContentPage
     private async Task<bool> RefreshData()
     {
 
-        // Items
-        var items = await LIN.Access.Controllers.Intents.ReadAll(AppShell.Hub.ID, Sesion.Instance.Informacion.Usuario);
+        //// Items
+        //var items = await LIN.Access.Auth.Controllers..ReadAll(AppShell.Hub.ID, Sesion.Instance.Informacion.Usuario);
 
-        // Analisis de respuesta
-        if (items.Response != Shared.Responses.Responses.Success)
-            return false;
+        //// Analisis de respuesta
+        //if (items.Response != Shared.Responses.Responses.Success)
+        //    return false;
 
-        // Rellena los items
-        Intentos = items.Models.ToList();
+        //// Rellena los items
+        //Intentos = items.Models.ToList();
         return true;
 
     }
@@ -191,14 +191,14 @@ public partial class Home : ContentPage
     /// </summary>
     private async void LoadUserData()
     {
-        perfil.Source = ImageEncoder.Decode(Sesion.Instance.Informacion.Perfil);
+        perfil.Source = ImageEncoder.Decode(Access.Auth.Session.Instance.Account.Perfil);
 
 
 
 
-        lbUser.Text = Sesion.Instance.Informacion.Nombre;
-        AppShell.SetTitle(LIN.Access.Sesion.Instance.Informacion.Nombre);
-        AppShell.SetImage(ImageEncoder.Decode(Sesion.Instance.Informacion.Perfil));
+        lbUser.Text = Access.Auth.Session.Instance.Account.Nombre;
+        AppShell.SetTitle(Access.Auth.Session.Instance.Account.Nombre);
+        AppShell.SetImage(ImageEncoder.Decode(Access.Auth.Session.Instance.Account.Perfil));
 
 
 
