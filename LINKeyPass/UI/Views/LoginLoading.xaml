@@ -11,7 +11,7 @@
         <!--  Logotipo  -->
         <Custom:Image
             HeightRequest="35"
-            Source="proteger.png"
+            Source="huella.png"
             WidthRequest="35" />
 
 

@@ -12,7 +12,7 @@
         <Custom:Image
             x:Name="Yilena"
             HeightRequest="35"
-            Source="icono.png"
+            Source="huella.png"
             WidthRequest="35" />
 
 
