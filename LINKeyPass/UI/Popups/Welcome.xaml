@@ -22,16 +22,17 @@
 
 
                 <Image
-                    HeightRequest="23"
+                    Margin="0,10,0,0"
+                    HeightRequest="30"
                     Source="huella.png"
-                    WidthRequest="23" />
+                    WidthRequest="30" />
 
                 <Label
                     Margin="0,15,0,0"
                     FontFamily="QSB"
                     FontSize="20"
                     HorizontalOptions="Center"
-                    Text="Crear LIN Passkey"
+                    Text="LIN Passkey"
                     VerticalOptions="Center" />
 
                 <HorizontalStackLayout Margin="0,8,0,0" HorizontalOptions="Center">
@@ -71,13 +72,13 @@
                     HeightRequest="57"
                     StrokeShape="RoundRectangle 10"
                     StrokeThickness="0">
-                    <HorizontalStackLayout Margin="10,0,0,0">
+                    <HorizontalStackLayout Margin="16,0,0,0">
                         <Image
                             HeightRequest="25"
                             Source="user.png"
                             WidthRequest="25" />
 
-                        <VerticalStackLayout Margin="5,0,0,0" VerticalOptions="Center">
+                        <VerticalStackLayout Margin="7,0,0,0" VerticalOptions="Center">
                             <Label
                                 FontFamily="QSB"
                                 FontSize="12"
@@ -101,18 +102,18 @@
                     VerticalOptions="EndAndExpand">
 
                     <Button
-                        BackgroundColor="{StaticResource Red}"
+                        BackgroundColor="#0D0E13"
                         Clicked="Button_Clicked_1"
                         FontFamily="QSB"
-                        FontSize="11"
+                        FontSize="12"
                         Text="Cancelar"
                         WidthRequest="150" />
 
                     <Button
-                        BackgroundColor="#2563eb"
+                        BackgroundColor="#6366f1"
                         Clicked="Button_Clicked"
                         FontFamily="QSB"
-                        FontSize="11"
+                        FontSize="12"
                         Text="Aceptar"
                         WidthRequest="150" />
 
