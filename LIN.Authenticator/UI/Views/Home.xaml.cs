@@ -39,11 +39,14 @@ public partial class Home : ContentPage
 
         var isEnabled = await CrossFingerprint.Current.IsAvailableAsync();
 
+
+
         if (isEnabled)
         {
             displayError.Hide();
             displayInfo.Show();
             displayPic.Source = ImageSource.FromFile("finger_il.png");
+            displayOrg.Text = LIN.Access.Auth.SessionAuth.Instance.Account.Organization?.Name ?? "Sin organización";
         }
         else
         {
