@@ -44,7 +44,7 @@ public partial class Welcome : ContentPage
                 try
                 {
                     modelo.Status = PassKeyStatus.Success;
-                    modelo.Token = Access.Auth.Session.Instance.AccountToken;
+                    modelo.Token = Access.Auth.SessionAuth.Instance.AccountToken;
                     AppShell.PassKeyHub.SendStatus(modelo);
                     this.Close();
                     return;

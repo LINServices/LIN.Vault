@@ -69,6 +69,10 @@
 		
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\Images\finger_il.png" />
+	</ItemGroup>
+
 	
 	
 	

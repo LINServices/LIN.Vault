@@ -56,7 +56,7 @@ public partial class Home : ContentPage
         AppShell.ActualPage = this;
         try
         {
-            AppShell.SetImage(ImageEncoder.Decode(Access.Auth. Session.Instance.Account.Perfil));
+            AppShell.SetImage(ImageEncoder.Decode(Access.Auth. SessionAuth.Instance.Account.Perfil));
         }
         catch
         {
@@ -191,16 +191,20 @@ public partial class Home : ContentPage
     /// </summary>
     private async void LoadUserData()
     {
-        perfil.Source = ImageEncoder.Decode(Access.Auth.Session.Instance.Account.Perfil);
+        perfil.Source = ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Perfil);
 
 
 
 
-        lbUser.Text = Access.Auth.Session.Instance.Account.Nombre;
-        AppShell.SetTitle(Access.Auth.Session.Instance.Account.Nombre);
-        AppShell.SetImage(ImageEncoder.Decode(Access.Auth.Session.Instance.Account.Perfil));
+        lbUser.Text = Access.Auth.SessionAuth.Instance.Account.Nombre;
+        AppShell.SetTitle(Access.Auth.SessionAuth.Instance.Account.Nombre);
+        AppShell.SetImage(ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Perfil));
 
+        var session = Access.Auth.SessionAuth.Instance.Account;
 
+        displayName.Text = session.Nombre;
+        displayOrg.Text = "Sin organización";
+        perfil1.Source = ImageEncoder.Decode(session.Perfil);
 
 
         //    lbUsuario.Text = "@" + Sesion.Instance.Informacion.UsuarioU;

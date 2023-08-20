@@ -6,6 +6,7 @@
     xmlns:Custom="clr-namespace:LIN.Controls.UI;assembly=LIN.Controls"
     x:Name="this"
     BackgroundColor="{StaticResource Background}"
+    BackgroundImageSource="bf"
     NavigationPage.HasNavigationBar="False">
 
 
@@ -45,242 +46,71 @@
 
     <ScrollView>
 
-        <VerticalStackLayout Padding="10">
+
+        <VerticalStackLayout Padding="10" VerticalOptions="CenterAndExpand">
+
 
             <!--  Presentacion  -->
             <Label
                 FontFamily="QSB"
-                FontSize="17"
+                FontSize="24"
                 HorizontalOptions="CenterAndExpand"
-                Text="Tablero de LIN Security"
-                TextColor="{StaticResource Gray600}" />
+                Text="LIN Authenticator"
+                TextColor="#0D0E13" />
+            
+              <Image
+                Margin="0,10,0,0"
+                Source="finger_il.png"
+                WidthRequest="250" />
 
-
-            <!--  Pass key  -->
-            <Grid Margin="0,10,0,0">
-                <Border
-                    Grid.Row="0"
-                    HeightRequest="60"
-                    StrokeShape="RoundRectangle 10"
-                    StrokeThickness="0">
-                    <Border.Shadow>
-                        <Shadow Brush="Black" Opacity="0.05" />
-                    </Border.Shadow>
-
-                </Border>
-
-                <HorizontalStackLayout Grid.Row="0" Padding="15">
-
-                    <Image HeightRequest="25" Source="proteger" />
-
-                    <VerticalStackLayout Margin="10,0,0,0">
-
-                        <Label
-                            FontFamily="QSB"
-                            FontSize="15"
-                            HorizontalOptions="Start"
-                            Text="LIN Passkey" />
-
-                        <Label
-                            FontFamily="QSM"
-                            FontSize="12"
-                            HorizontalOptions="Start"
-                            Text="Esta funcion esta activada en tu cuenta."
-                            TextColor="{StaticResource Gray600}" />
-
-                    </VerticalStackLayout>
-
-                </HorizontalStackLayout>
-
-            </Grid>
-
-
-            <!--  Contraseñas  -->
-            <Grid
-                Margin="0,7,0,0"
-                ColumnDefinitions="*,*"
-                ColumnSpacing="5">
-
-                <!--  Admin Contraseña  -->
-                <Grid Grid.Column="0">
-                    <Border
-                        Grid.Row="0"
-                        HeightRequest="60"
-                        StrokeShape="RoundRectangle 10"
-                        StrokeThickness="0">
-                        <Border.Shadow>
-                            <Shadow Brush="Black" Opacity="0.05" />
-                        </Border.Shadow>
-
-                    </Border>
-                    <HorizontalStackLayout Grid.Row="0" Padding="15">
-
-                        <Image HeightRequest="25" Source="bloquear" />
-
-                        <VerticalStackLayout Margin="7,0,0,0">
-
-                            <Label
-                                FontFamily="QSB"
-                                FontSize="14"
-                                HorizontalOptions="Start"
-                                Text="Contraseña" />
-
-                            <Label
-                                FontFamily="QSM"
-                                FontSize="10"
-                                HorizontalOptions="Start"
-                                Text="Cambiada hace 8 dias."
-                                TextColor="{StaticResource Gray600}" />
-
-                        </VerticalStackLayout>
-
-
-                    </HorizontalStackLayout>
-
-
-                </Grid>
-
-
-                <!--  Admin Pagos  -->
-                <Grid Grid.Column="1">
+            <Border
+                BackgroundColor="White"
+                HeightRequest="100"
+                Margin="0,10,0,0"
+                StrokeShape="RoundRectangle 10">
+                <StackLayout Orientation="Horizontal">
 
                     <Border
-                        Grid.Row="0"
+                        Margin="15,0,0,0"
                         HeightRequest="60"
-                        StrokeShape="RoundRectangle 10"
-                        StrokeThickness="0">
-                        <Border.Shadow>
-                            <Shadow Brush="Black" Opacity="0.05" />
-                        </Border.Shadow>
-
+                        StrokeShape="RoundRectangle 50"
+                        WidthRequest="60">
+                        <Image
+                            HeightRequest="50"
+                            Source="invitacion.png"
+                            x:Name="perfil1"
+                            VerticalOptions="Center"
+                            WidthRequest="50" />
                     </Border>
 
+                    <StackLayout Margin="10,0,0,0" VerticalOptions="CenterAndExpand">
 
-                    <HorizontalStackLayout Grid.Row="0" Padding="15">
-
-                        <Image HeightRequest="25" Source="billetera" />
-
-                        <VerticalStackLayout Margin="7,0,0,0">
-
+                        <StackLayout Orientation="Horizontal">
+                            <Image HeightRequest="15" Source="user" />
                             <Label
-                                FontFamily="QSB"
-                                FontSize="14"
-                                HorizontalOptions="Start"
-                                Text="Billetera" />
-
-                            <Label
+                                Margin="5,0,0,0"
                                 FontFamily="QSM"
-                                FontSize="10"
-                                HorizontalOptions="Start"
-                                Text="Administrar pagos."
-                                TextColor="{StaticResource Gray600}" />
+                                x:Name="displayName"
+                                Text="EL nombre" />
+                        </StackLayout>
 
-                        </VerticalStackLayout>
-
-
-                    </HorizontalStackLayout>
-                </Grid>
-
-
-            </Grid>
-
-
-            <!--  Presentacion  -->
-            <Label
-                Margin="0,20,0,0"
-                FontFamily="QSB"
-                FontSize="15"
-                Text="Inventario LIN"
-                TextColor="{StaticResource Gray500}" />
-
-            <!--  Contraseñas  -->
-            <Grid
-                Margin="0,7,0,0"
-                ColumnDefinitions="*,*"
-                ColumnSpacing="5">
-
-                <!--  Admin Inventarios  -->
-                <Grid Grid.Column="0">
-                    <Border
-                        Grid.Row="0"
-                        HeightRequest="60"
-                        StrokeShape="RoundRectangle 10"
-                        StrokeThickness="0">
-                        <Border.Shadow>
-                            <Shadow Brush="Black" Opacity="0.05" />
-                        </Border.Shadow>
-
-                    </Border>
-                    <HorizontalStackLayout Grid.Row="0" Padding="15">
-
-                        <Image HeightRequest="25" Source="inventory" />
-
-                        <VerticalStackLayout Margin="7,0,0,0">
-
+                        <StackLayout Orientation="Horizontal">
+                            <Image HeightRequest="15" Source="empresa" />
                             <Label
-                                FontFamily="QSB"
-                                FontSize="14"
-                                HorizontalOptions="Start"
-                                Text="Inventarios" />
-
-                            <Label
+                                Margin="5,0,0,0"
+                                x:Name="displayOrg"
                                 FontFamily="QSM"
-                                FontSize="10"
-                                HorizontalOptions="Start"
-                                Text="8 Inventarios"
-                                TextColor="{StaticResource Gray600}" />
-
-                        </VerticalStackLayout>
+                                Text="Organizacion" />
+                        </StackLayout>
 
 
-                    </HorizontalStackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+            </Border>
 
 
-                </Grid>
 
-
-                <!--  Admin Contactos  -->
-                <Grid Grid.Column="1">
-
-                    <Border
-                        Grid.Row="0"
-                        HeightRequest="60"
-                        StrokeShape="RoundRectangle 10"
-                        StrokeThickness="0">
-                        <Border.Shadow>
-                            <Shadow Brush="Black" Opacity="0.05" />
-                        </Border.Shadow>
-
-                    </Border>
-
-
-                    <HorizontalStackLayout Grid.Row="0" Padding="15">
-
-                        <Image HeightRequest="25" Source="group_black" />
-
-                        <VerticalStackLayout Margin="7,0,0,0">
-
-                            <Label
-                                FontFamily="QSB"
-                                FontSize="14"
-                                HorizontalOptions="Start"
-                                Text="Contactos" />
-
-                            <Label
-                                FontFamily="QSM"
-                                FontSize="10"
-                                HorizontalOptions="Start"
-                                Text="10 contactos"
-                                TextColor="{StaticResource Gray600}" />
-
-                        </VerticalStackLayout>
-
-
-                    </HorizontalStackLayout>
-                </Grid>
-
-
-            </Grid>
 
 
         </VerticalStackLayout>

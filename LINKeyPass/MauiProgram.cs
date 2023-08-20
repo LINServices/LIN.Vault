@@ -81,7 +81,7 @@ public static class MauiProgram
 
                         // Battery.Default.BatteryInfoChanged += Default_BatteryInfoChanged;
 
-                        if (LIN.Access.Auth.Session.IsOpen)
+                        if (LIN.Access.Auth.SessionAuth.IsOpen)
                             AppShell.Hub.Reconnect();
 
                     })

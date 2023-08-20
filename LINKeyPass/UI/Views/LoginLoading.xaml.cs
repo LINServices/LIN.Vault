@@ -100,7 +100,7 @@ public partial class LoginLoading : ContentPage
             Platforms platform = MauiProgram.GetPlatform();
 
             // Inicio de sesion
-            var (Sesion, Response) = await LIN.Access.Auth.Session.LoginWith(User, Pass);
+            var (Sesion, Response) = await LIN.Access.Auth.SessionAuth.LoginWith(User, Pass);
 
 
             // Evaluacion

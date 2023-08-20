@@ -116,7 +116,7 @@ public partial class Singin : ContentPage
         }
 
 
-        _ = await LIN.Access.Auth.Session.LoginWith(res.Token);
+        _ = await LIN.Access.Auth.SessionAuth.LoginWith(res.Token);
 
 
         // Abre la nueva ventana

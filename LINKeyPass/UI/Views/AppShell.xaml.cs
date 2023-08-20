@@ -27,7 +27,7 @@ public partial class AppShell : Shell
     /// <summary>
     /// Hub de Cuenta
     /// </summary>
-    public static readonly Access.Auth.Hubs.PassKeyHub PassKeyHub = new(LIN.Access.Auth.Session.Instance.Account.Usuario, true);
+    public static readonly Access.Auth.Hubs.PassKeyHub PassKeyHub = new(LIN.Access.Auth.SessionAuth.Instance.Account.Usuario, true);
 
 
 
@@ -40,14 +40,14 @@ public partial class AppShell : Shell
         var model = new DeviceModel()
         {
             Name = MauiProgram.GetDeviceName(),
-            Cuenta = LIN.Access.Auth. Session.Instance.Account.ID,
+            Cuenta = LIN.Access.Auth. SessionAuth.Instance.Account.ID,
             Modelo = DeviceInfo.Current.Model,
             BateryConected = BatteryService.IsChargin,
             BateryLevel = BatteryService.Percent,
             Manufacter = DeviceInfo.Current.Manufacturer,
             OsVersion = DeviceInfo.Current.VersionString,
             Platform = MauiProgram.GetPlatform(),
-            Token = LIN.Access.Auth.Session.Instance.AccountToken,
+            Token = LIN.Access.Auth.SessionAuth.Instance.AccountToken,
             App = Applications.Admin
         };
 
