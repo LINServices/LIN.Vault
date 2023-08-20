@@ -46,7 +46,7 @@ public partial class Home : ContentPage
             displayError.Hide();
             displayInfo.Show();
             displayPic.Source = ImageSource.FromFile("finger_il.png");
-            displayOrg.Text = LIN.Access.Auth.SessionAuth.Instance.Account.Organization?.Name ?? "Sin organización";
+          
         }
         else
         {
@@ -199,7 +199,7 @@ public partial class Home : ContentPage
         var session = Access.Auth.SessionAuth.Instance.Account;
 
         displayName.Text = session.Nombre;
-        displayOrg.Text = "Sin organización";
+        displayOrg.Text = LIN.Access.Auth.SessionAuth.Instance.Account.Organization?.Name ?? "Sin organización";
         perfil1.Source = ImageEncoder.Decode(session.Perfil);
 
 
