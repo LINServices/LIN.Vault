@@ -123,8 +123,14 @@ public partial class LoginLoading : ContentPage
                     return;
 
                 // No existe el usuario
+                case Responses.UnauthorizedByOrg:
+                    new Login("Tu organización no permite que inicies en esta app").ShowOnTop();
+                    this.Close();
+                    return;
+
+                // No existe el usuario
                 case Responses.NotConnection:
-                    new Login("No hay conexion").ShowOnTop();
+                    new Login("No hay conexión").ShowOnTop();
                     this.Close();
                     return;
 

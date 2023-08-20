@@ -52,6 +52,9 @@ public static class MauiProgram
         // Builder
         var builder = MauiApp.CreateBuilder();
 
+
+        LIN.Access.Auth.Build.SetAuth("FR5444DDF");
+
         // Configuracion
         builder
             .UseMauiApp<App>()
