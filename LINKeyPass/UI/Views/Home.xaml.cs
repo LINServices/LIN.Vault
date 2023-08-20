@@ -43,7 +43,7 @@ public partial class Home : ContentPage
         AppShell.ActualPage = this;
         try
         {
-            AppShell.SetImage(ImageEncoder.Decode(Access.Auth. SessionAuth.Instance.Account.Perfil));
+            AppShell.SetImage(ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Perfil));
         }
         catch
         {
@@ -66,42 +66,23 @@ public partial class Home : ContentPage
         // Comprueba si se rellenaron los datos
         if (!dataRes)
         {
-            //lbInfo.Text = "No hay conexion";
-            //lbInfo.Show();
+            _ = DisplayAlert("Error", "Hubo un error al obtener información desde LIN Passkey", "OK");
             return;
         }
 
-        // Carga el cache
-        // Controles = LoadCache(Notificacions);
-
-        // Carga los controles a la vista
-        //        LoadControls(Controles);
-
-        // Si no hay productos
-        if (!Intentos.Any())
-        {
-            //  lbInfo.Text = "No hay nada que mostrar aqui";
-        }
-
         Render();
-
-
-
-
-
-        // Muestra el mensaje
-        //  lbInfo.Show();
-
     }
 
 
+    /// <summary>
+    /// Renderiza la lista de intentos
+    /// </summary>
     private void Render()
     {
 
-        foreach (var e in Intentos)
-        {
-            new Popups.Welcome(e).Show();
-        }
+        foreach (var intento in Intentos)
+            new Popups.Welcome(intento).Show();
+        
 
     }
 
@@ -112,15 +93,15 @@ public partial class Home : ContentPage
     private async Task<bool> RefreshData()
     {
 
-        //// Items
-        //var items = await LIN.Access.Auth.Controllers..ReadAll(AppShell.Hub.ID, Sesion.Instance.Informacion.Usuario);
+        // Items
+        var items = await LIN.Access.Auth.Controllers.Intents.ReadAll(LIN.Access.Auth.SessionAuth.Instance.AccountToken);
 
-        //// Analisis de respuesta
-        //if (items.Response != Shared.Responses.Responses.Success)
-        //    return false;
+        // Análisis de respuesta
+        if (items.Response != Responses.Success)
+            return false;
 
-        //// Rellena los items
-        //Intentos = items.Models.ToList();
+        // Rellena los items
+        Intentos = items.Models.ToList();
         return true;
 
     }
@@ -239,7 +220,7 @@ public partial class Home : ContentPage
 
     private void Button_Clicked_1(object sender, EventArgs e)
     {
-       
+
 
     }
 }
