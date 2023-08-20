@@ -44,6 +44,7 @@
             x:Name="txtUser"
             Margin="0,10,0,0"
             x:FieldModifier="public"
+            FocusColor="#4f46e5"
             Placeholder="Usuario"
             TextChanged="TxtChanged"
             WidthRequest="300" />
@@ -54,6 +55,7 @@
             x:Name="txtPass"
             Margin="0,6,0,0"
             x:FieldModifier="public"
+            FocusColor="#4f46e5"
             IsPassword="True"
             Placeholder="Contraseña"
             TextChanged="TxtChanged"
