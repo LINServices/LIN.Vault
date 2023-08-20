@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.KeyPass", "LINKeyPass\LIN.KeyPass.csproj", "{E9922A11-751E-4588-A88A-EBDE80FAA616}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.Authenticator", "LIN.Authenticator\LIN.Authenticator.csproj", "{E9922A11-751E-4588-A88A-EBDE80FAA616}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.LocalDataBase", "..\LIN\LIN.LocalDataBase\LIN.LocalDataBase.csproj", "{97BA4B6D-F103-43A1-90E5-D9632CCC88CA}"
 EndProject
