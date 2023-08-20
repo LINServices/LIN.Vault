@@ -1,3 +1,5 @@
+using Plugin.Fingerprint;
+
 namespace LIN.UI.Views;
 
 
@@ -20,10 +22,35 @@ public partial class Home : ContentPage
         AppShell.ActualPage = this;
         InitializeComponent();
 
+        LoadFinger();
+
         LoadUserData();
         Load();
 
         AppShell.OnReciveIntent += AppShell_OnReciveIntent;
+
+
+    }
+
+
+    private async void LoadFinger()
+    {
+
+
+        var isEnabled = await CrossFingerprint.Current.IsAvailableAsync();
+
+        if (isEnabled)
+        {
+            displayError.Hide();
+            displayInfo.Show();
+            displayPic.Source = ImageSource.FromFile("finger_il.png");
+        }
+        else
+        {
+            displayError.Show();
+            displayInfo.Hide();
+            displayPic.Source = ImageSource.FromFile("finger_il2.png");
+        }
 
     }
 
