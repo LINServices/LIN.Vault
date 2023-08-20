@@ -191,12 +191,12 @@ public partial class Home : ContentPage
     /// </summary>
     private async void LoadUserData()
     {
-        perfil.Source = ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Perfil);
+        //perfil.Source = ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Perfil);
 
 
 
 
-        lbUser.Text = Access.Auth.SessionAuth.Instance.Account.Nombre;
+        //lbUser.Text = Access.Auth.SessionAuth.Instance.Account.Nombre;
         AppShell.SetTitle(Access.Auth.SessionAuth.Instance.Account.Nombre);
         AppShell.SetImage(ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Perfil));
 

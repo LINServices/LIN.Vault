@@ -165,12 +165,12 @@ public partial class AppShell : Shell
 
     public static void SetTitle(string user)
     {
-        Instance.lbUser.Text = user;
+      
     }
 
     public static void SetImage(ImageSource source)
     {
-        Instance.perfil.Source = source;
+       
     }
 
 
