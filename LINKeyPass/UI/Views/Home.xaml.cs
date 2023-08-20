@@ -22,7 +22,6 @@ public partial class Home : ContentPage
 
         LoadUserData();
         Load();
-        SuscribeToHub();
 
         AppShell.OnReciveIntent += AppShell_OnReciveIntent;
 
@@ -34,18 +33,6 @@ public partial class Home : ContentPage
     }
 
 
-    private void SuscribeToHub()
-    {
-       // AppShell.Hub.OnReceiveNotification += Hub_OnReceiveNotification;
-    }
-
-    private void Hub_OnReceiveNotification(object? sender, string e)
-    {
-        this.Dispatcher.DispatchAsync(async () =>
-        {
-            await RefreshData();
-        });
-    }
 
 
     /// <summary>
@@ -192,8 +179,6 @@ public partial class Home : ContentPage
     private async void LoadUserData()
     {
         //perfil.Source = ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Perfil);
-
-
 
 
         //lbUser.Text = Access.Auth.SessionAuth.Instance.Account.Nombre;
