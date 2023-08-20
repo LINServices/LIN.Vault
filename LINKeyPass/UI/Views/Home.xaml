@@ -50,7 +50,7 @@
             <Image
                 Margin="0,10,0,0"
                 x:Name="displayPic"
-                Source="finger_il.png"
+                Source="finger_il3.png"
                 WidthRequest="280" />
 
             <Border
