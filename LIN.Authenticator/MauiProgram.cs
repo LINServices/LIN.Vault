@@ -34,12 +34,6 @@ public static class MauiProgram
 
 
 
-
-
-
-
-
-
     public static string GetDeviceName()
     {
         return DeviceInfo.Current.Name;
