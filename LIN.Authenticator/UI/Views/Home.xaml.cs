@@ -199,7 +199,7 @@ public partial class Home : ContentPage
         var session = Access.Auth.SessionAuth.Instance.Account;
 
         displayName.Text = session.Nombre;
-        displayOrg.Text = LIN.Access.Auth.SessionAuth.Instance.Account.Organization?.Name ?? "Sin organización";
+        displayOrg.Text = LIN.Access.Auth.SessionAuth.Instance.Account.OrganizationAccess?.Organization.Name ?? "Sin organización";
         perfil1.Source = ImageEncoder.Decode(session.Perfil);
 
 
