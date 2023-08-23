@@ -14,7 +14,7 @@ public partial class Welcome : ContentPage
         InitializeComponent();
         this.modelo = modelo;
         lbHora.Text = modelo.Hora.ToString();
-        displayAppName.Text = " " + modelo.ApplicationName;
+        displayAppName.Text = " " + modelo.Application.Name;
     }
 
 

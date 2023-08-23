@@ -27,7 +27,7 @@ public partial class AppShell : Shell
     /// <summary>
     /// Hub de Cuenta
     /// </summary>
-    public static readonly Access.Auth.Hubs.PassKeyHub PassKeyHub = new(LIN.Access.Auth.SessionAuth.Instance.Account.Usuario, true);
+    public static readonly Access.Auth.Hubs.PassKeyHub PassKeyHub = new(LIN.Access.Auth.SessionAuth.Instance.Account.Usuario, "",true);
 
 
 
