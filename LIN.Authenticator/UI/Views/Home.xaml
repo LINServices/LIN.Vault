@@ -64,15 +64,15 @@
 
                     <Border
                         Margin="15,0,0,0"
-                        HeightRequest="50"
+                        HeightRequest="45"
                         StrokeShape="RoundRectangle 50"
-                        WidthRequest="50">
+                        WidthRequest="45">
                         <Image
                             x:Name="perfil1"
-                            HeightRequest="40"
+                            HeightRequest="45"
                             Source="invitacion.png"
                             VerticalOptions="Center"
-                            WidthRequest="40" />
+                            WidthRequest="45" />
                     </Border>
 
                     <StackLayout Margin="10,0,0,0" VerticalOptions="CenterAndExpand">
