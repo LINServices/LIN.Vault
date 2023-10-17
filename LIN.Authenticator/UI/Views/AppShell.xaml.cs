@@ -47,8 +47,7 @@ public partial class AppShell : Shell
             Manufacter = DeviceInfo.Current.Manufacturer,
             OsVersion = DeviceInfo.Current.VersionString,
             Platform = MauiProgram.GetPlatform(),
-            Token = LIN.Access.Auth.SessionAuth.Instance.AccountToken,
-            App = Applications.Admin
+            Token = LIN.Access.Auth.SessionAuth.Instance.AccountToken
         };
 
 

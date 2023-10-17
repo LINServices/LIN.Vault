@@ -35,10 +35,15 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
 	  <WarningLevel>9999</WarningLevel>
+	  <AndroidKeyStore>False</AndroidKeyStore>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 	  <WarningLevel>9999</WarningLevel>
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <RunAOTCompilation>True</RunAOTCompilation>
+	  <PublishTrimmed>True</PublishTrimmed>
+	  <AndroidKeyStore>False</AndroidKeyStore>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
