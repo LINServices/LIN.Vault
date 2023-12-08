@@ -77,7 +77,10 @@ public partial class Singin : ContentPage
         var account = new AccountModel
         {
             Nombre = name,
-            Usuario = user,
+            Identity = new()
+            {
+                Unique = user
+            },
             Contraseña = pass,
             Perfil = await inpImg.GetBytes()
         };

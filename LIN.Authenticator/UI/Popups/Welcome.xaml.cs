@@ -45,7 +45,6 @@ public partial class Welcome : ContentPage
                 {
                     modelo.Status = PassKeyStatus.Success;
                     modelo.Token = Access.Auth.SessionAuth.Instance.AccountToken;
-                    AppShell.PassKeyHub.SendStatus(modelo);
                     this.Close();
                     return;
                 }
@@ -82,7 +81,6 @@ public partial class Welcome : ContentPage
             modelo.Status = PassKeyStatus.Rejected;
             modelo.Token = "";
 
-            AppShell.PassKeyHub.SendStatus(modelo);
             this.Close();
         }
         catch

@@ -1,10 +1,10 @@
 ﻿global using CommunityToolkit.Maui;
-global using LIN.Types.Auth.Enumerations;
+global using LIN.Types.Identity.Enumerations;
 global using LIN.Controls;
 global using LIN.Types.Enumerations;
 global using LIN.Types.Responses;
-global using LIN.Types.Auth.Models;
-global using LIN.Types.Auth;
+global using LIN.Types.Identity.Models;
+global using LIN.Types.Identity;
 using LIN.UI.Views;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
@@ -76,11 +76,6 @@ public static class MauiProgram
                     .OnStart((activity) =>
                     {
 
-                        // Battery.Default.BatteryInfoChanged += Default_BatteryInfoChanged;
-
-                        if (LIN.Access.Auth.SessionAuth.IsOpen)
-                            AppShell.Hub.Reconnect();
-
                     })
 
                     .OnCreate((activity, bundle) =>
@@ -100,7 +95,7 @@ public static class MauiProgram
                        {
                            try
                            {
-                               AppShell.Hub.CloseSesion();
+                              
                            }
                            catch
                            {

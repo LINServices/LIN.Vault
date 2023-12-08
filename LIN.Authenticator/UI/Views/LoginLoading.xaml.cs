@@ -146,7 +146,7 @@ public partial class LoginLoading : ContentPage
             var modelo = Sesion.Account;
             modelo.Contraseña = Pass;
 
-            await Database.SaveUser(new() { ID = modelo.ID, UserU = modelo.Usuario, Password = Pass});
+            await Database.SaveUser(new() { ID = modelo.ID, UserU = modelo.Identity.Unique, Password = Pass});
 
             // Abre la nueva ventana
             App.Current!.MainPage = new AppShell();

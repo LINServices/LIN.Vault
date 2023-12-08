@@ -1,10 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;</TargetFrameworks>
-		
-		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<TargetFrameworks>net8.0-android;</TargetFrameworks>
+	
 		<OutputType>Exe</OutputType>
 		<RootNamespace>LIN</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -23,36 +21,11 @@
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<Configurations>Debug;Release;</Configurations>
 	</PropertyGroup>
 
 
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
-		<MauiVersion>7.0.58</MauiVersion>
-	</PropertyGroup>
-
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
-	  <WarningLevel>9999</WarningLevel>
-	  <AndroidKeyStore>False</AndroidKeyStore>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
-	  <WarningLevel>9999</WarningLevel>
-	  <AndroidPackageFormat>apk</AndroidPackageFormat>
-	  <RunAOTCompilation>True</RunAOTCompilation>
-	  <PublishTrimmed>True</PublishTrimmed>
-	  <AndroidKeyStore>False</AndroidKeyStore>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
-	  <WarningLevel>9999</WarningLevel>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
-	  <WarningLevel>9999</WarningLevel>
-	</PropertyGroup>
 
 	<ItemGroup>
 		
@@ -83,11 +56,13 @@
 	
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Plugin.Fingerprint" Version="2.1.5" />
 		<PackageReference Include="System.Runtime.InteropServices.NFloat.Internal" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
 	</ItemGroup>
 
 
@@ -111,7 +86,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\AccesoAPI\LIN.Access.Auth\LIN.Access.Auth.csproj" />
-	  <ProjectReference Include="..\..\..\Tipos\LIN.Types.Auth\LIN.Types.Auth.csproj" />
+	  <ProjectReference Include="..\..\..\Tipos\LIN.Types.Identity\LIN.Types.Identity\LIN.Types.Identity.csproj" />
 	  <ProjectReference Include="..\..\..\Tipos\LIN.Types\LIN.Types.csproj" />
 	  <ProjectReference Include="..\..\LIN\LIN.Controls\LIN.Controls.csproj" />
 	  <ProjectReference Include="..\..\LIN\LIN.LocalDataBase\LIN.LocalDataBase.csproj" />
