@@ -76,13 +76,13 @@ public partial class Singin : ContentPage
 
         var account = new AccountModel
         {
-            Nombre = name,
+            Name = name,
             Identity = new()
             {
                 Unique = user
             },
-            Contraseña = pass,
-            Perfil = await inpImg.GetBytes()
+            Password = pass,
+            Profile = await inpImg.GetBytes()
         };
 
 
@@ -123,7 +123,7 @@ public partial class Singin : ContentPage
 
 
         // Abre la nueva ventana
-        App.Current!.MainPage = new AppShell();
+        App.Current!.MainPage = new Home();
 
         this.Close();
     }

@@ -22,7 +22,7 @@
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-		<Configurations>Debug;Release;</Configurations>
+
 	</PropertyGroup>
 
 
@@ -59,17 +59,15 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		
+		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
+		
 		<PackageReference Include="Plugin.Fingerprint" Version="2.1.5" />
 		<PackageReference Include="System.Runtime.InteropServices.NFloat.Internal" Version="6.0.1" />
 	</ItemGroup>
 
 
 	<ItemGroup>
-	  <MauiXaml Update="UI\Views\AppShell.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="UI\Views\Home.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -86,7 +84,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\AccesoAPI\LIN.Access.Auth\LIN.Access.Auth.csproj" />
-	  <ProjectReference Include="..\..\..\Tipos\LIN.Types.Identity\LIN.Types.Identity\LIN.Types.Identity.csproj" />
+	  <ProjectReference Include="..\..\..\Tipos\LIN.Types.Cloud.Identity\LIN.Types.Cloud.Identity.csproj" />
 	  <ProjectReference Include="..\..\..\Tipos\LIN.Types\LIN.Types.csproj" />
 	  <ProjectReference Include="..\..\LIN\LIN.Controls\LIN.Controls.csproj" />
 	  <ProjectReference Include="..\..\LIN\LIN.LocalDataBase\LIN.LocalDataBase.csproj" />

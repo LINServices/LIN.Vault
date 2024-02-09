@@ -1,10 +1,10 @@
 ﻿global using CommunityToolkit.Maui;
-global using LIN.Types.Identity.Enumerations;
+global using LIN.Types.Cloud.Identity.Enumerations;
 global using LIN.Controls;
 global using LIN.Types.Enumerations;
 global using LIN.Types.Responses;
-global using LIN.Types.Identity.Models;
-global using LIN.Types.Identity;
+global using LIN.Types.Cloud.Identity.Models;
+global using LIN.Types.Cloud.Identity;
 using LIN.UI.Views;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;

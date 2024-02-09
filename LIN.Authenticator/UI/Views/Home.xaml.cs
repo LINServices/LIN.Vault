@@ -6,6 +6,36 @@ namespace LIN.UI.Views;
 public partial class Home : ContentPage
 {
 
+
+    /// <summary>
+    /// Hub de Cuenta
+    /// </summary>
+    public static readonly Access.Auth.Hubs.PassKeyHub PassKeyHub = new(LIN.Access.Auth.SessionAuth.Instance.Account.Identity.Unique, "",LIN.Access.Auth.SessionAuth.Instance.AccountToken , true);
+
+
+
+    async void A()
+    {
+        await PassKeyHub.Suscribe();
+        PassKeyHub.OnReceiveIntent += PassKeyHub_OnRecieveIntentAdmin;
+    }
+
+
+
+
+
+    private void PassKeyHub_OnRecieveIntentAdmin(object? sender, PassKeyModel e)
+    {
+        this.Dispatcher.DispatchAsync(() =>
+        {
+            // Abre la nueva ventana
+            App.Current!.MainPage = new Popups.Welcome(e);
+        });
+    }
+
+
+
+
     /// <summary>
     /// Lista de intentos
     /// </summary>
@@ -19,15 +49,13 @@ public partial class Home : ContentPage
     public Home()
     {
         Appearing += AppearingEvent;
-        AppShell.ActualPage = this;
         InitializeComponent();
 
         LoadFinger();
 
         LoadUserData();
         Load();
-
-        AppShell.OnReciveIntent += AppShell_OnReciveIntent;
+        A();
 
 
     }
@@ -57,10 +85,6 @@ public partial class Home : ContentPage
 
     }
 
-    private void AppShell_OnReciveIntent(object? sender, PassKeyModel e)
-    {
-        new Popups.Welcome(e).Show();
-    }
 
 
 
@@ -70,14 +94,14 @@ public partial class Home : ContentPage
     /// </summary>
     private void AppearingEvent(object? sender, EventArgs e)
     {
-        AppShell.ActualPage = this;
-        try
-        {
-            AppShell.SetImage(ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Perfil));
-        }
-        catch
-        {
-        }
+        //AppShell.ActualPage = this;
+        //try
+        //{
+        //    AppShell.SetImage(ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Profile));
+        //}
+        //catch
+        //{
+        //}
     }
 
 
@@ -123,15 +147,15 @@ public partial class Home : ContentPage
     private async Task<bool> RefreshData()
     {
 
-        // Items
-        var items = await LIN.Access.Auth.Controllers.Intents.ReadAll(LIN.Access.Auth.SessionAuth.Instance.AccountToken);
+        //// Items
+        //var items = await LIN.Access.Auth.Controllers.Intents.ReadAll(LIN.Access.Auth.SessionAuth.Instance.AccountToken);
 
-        // Análisis de respuesta
-        if (items.Response != Responses.Success)
-            return false;
+        //// Análisis de respuesta
+        //if (items.Response != Responses.Success)
+        //    return false;
 
-        // Rellena los items
-        Intentos = items.Models.ToList();
+        //// Rellena los items
+        //Intentos = items.Models.ToList();
         return true;
 
     }
@@ -193,14 +217,14 @@ public partial class Home : ContentPage
 
 
         //lbUser.Text = Access.Auth.SessionAuth.Instance.Account.Nombre;
-        AppShell.SetTitle(Access.Auth.SessionAuth.Instance.Account.Nombre);
-        AppShell.SetImage(ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Perfil));
+        //AppShell.SetTitle(Access.Auth.SessionAuth.Instance.Account.Name);
+        //AppShell.SetImage(ImageEncoder.Decode(Access.Auth.SessionAuth.Instance.Account.Profile));
 
         var session = Access.Auth.SessionAuth.Instance.Account;
 
-        displayName.Text = session.Nombre;
-        displayOrg.Text = LIN.Access.Auth.SessionAuth.Instance.Account.OrganizationAccess?.Organization.Name ?? "Sin organización";
-        perfil1.Source = ImageEncoder.Decode(session.Perfil);
+        displayName.Text = session.Name;
+        //displayOrg.Text = LIN.Access.Auth.SessionAuth.Instance.Account.OrganizationAccess?.Organization.Name ?? "Sin organización";
+        perfil1.Source = ImageEncoder.Decode(session.Profile);
 
 
         //    lbUsuario.Text = "@" + Sesion.Instance.Informacion.UsuarioU;

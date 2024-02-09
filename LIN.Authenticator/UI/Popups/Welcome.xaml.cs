@@ -14,7 +14,7 @@ public partial class Welcome : ContentPage
         InitializeComponent();
         this.modelo = modelo;
         lbHora.Text = modelo.Hora.ToString();
-        displayAppName.Text = " " + modelo.Application.Name;
+        displayAppName.Text = "Aplicación Web" ;
     }
 
 
@@ -45,6 +45,9 @@ public partial class Welcome : ContentPage
                 {
                     modelo.Status = PassKeyStatus.Success;
                     modelo.Token = Access.Auth.SessionAuth.Instance.AccountToken;
+                    Home.PassKeyHub.SendStatus(modelo);
+
+                    new Home().ShowOnTop();
                     this.Close();
                     return;
                 }
@@ -81,6 +84,8 @@ public partial class Welcome : ContentPage
             modelo.Status = PassKeyStatus.Rejected;
             modelo.Token = "";
 
+            Home.PassKeyHub.SendStatus(modelo);
+            new Home().ShowOnTop();
             this.Close();
         }
         catch
