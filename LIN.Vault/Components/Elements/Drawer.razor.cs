@@ -1,11 +1,5 @@
 ﻿using Plugin.Fingerprint.Abstractions;
 using Plugin.Fingerprint;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using LIN.Vault.Components.Pages;
 
 namespace LIN.Vault.Components.Elements;
@@ -14,6 +8,36 @@ namespace LIN.Vault.Components.Elements;
 public partial class Drawer
 {
 
+
+
+    private bool isOk = false;
+
+
+
+    private PassKeyModel? passkey;
+
+
+    public PassKeyModel? Passkey
+    {
+        get => passkey;
+        set
+        {
+            passkey = value;
+            isOk = false;
+            InvokeAsync(() =>
+            {
+
+                StateHasChanged();
+            });
+
+        }
+    }
+
+
+    public void Show()
+    {
+        JS.InvokeVoidAsync("ShowDrawer", "drawer-bottom-example", "btn-close-panel");
+    }
 
 
     private async void OnSuccess()

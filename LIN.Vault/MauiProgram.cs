@@ -1,38 +1,47 @@
 ﻿using Microsoft.Extensions.Logging;
-using Plugin.Fingerprint.Abstractions;
 using Plugin.Fingerprint;
+using Plugin.Fingerprint.Abstractions;
 
-namespace LIN.Vault
+namespace LIN.Vault;
+
+public static class MauiProgram
 {
-    public static class MauiProgram
+
+    /// <summary>
+    /// Nueva app Maui.
+    /// </summary>
+    public static MauiApp CreateMauiApp()
     {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                });
 
-            builder.Services.AddMauiBlazorWebView();
+        // Constructor.
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+            });
 
-#if ANDROID
- builder.Services.AddSingleton(typeof(IFingerprint), CrossFingerprint.Current);
-#endif
+        // Servicio blazor.
+        builder.Services.AddMauiBlazorWebView();
 
+        // Lector de huellas.
+        builder.Services.AddSingleton(typeof(IFingerprint), CrossFingerprint.Current);
 
-
+        // Debug mode.
 #if DEBUG
-            builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+        builder.Services.AddBlazorWebViewDeveloperTools();
+        builder.Logging.AddDebug();
 #endif
 
+        // Establecer app.
+        LIN.Access.Auth.Build.SetAuth("DEFAULT");
 
-            LIN.Access.Auth.Build.SetAuth("DEFAULT");
+        // Servicios de acceso.
+        LIN.Access.Auth.Build.Init();
 
-            return builder.Build();
-        }
+        return builder.Build();
     }
+
+
 }

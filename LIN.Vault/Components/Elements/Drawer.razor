@@ -1,41 +1,4 @@
-﻿
-@inject IJSRuntime JS
-@code{
-
-
-
-    
-
-
-    private bool isOk = false;
-
-
-
-    private PassKeyModel? passkey;
-
-
-    public PassKeyModel? Passkey { get => passkey;
-        set
-        {
-            passkey = value;
-            isOk = false;
-            InvokeAsync(() =>
-            {
-
-                StateHasChanged();
-            });
-
-        } }
-
-
-    public void Show()
-    {
-        JS.InvokeVoidAsync("ShowDrawer", "drawer-bottom-example", "btn-close-panel");
-    }
-
-}
-
-
+﻿@inject IJSRuntime JS
 
 <!-- drawer component -->
 <div id="drawer-bottom-example" class="fixed bottom-0 left-0 right-0 z-40 w-full p-4 overflow-y-auto transition-transform bg-white dark:bg-black translate-y-full rounded-t-xl" tabindex="-1" aria-labelledby="drawer-bottom-label">
