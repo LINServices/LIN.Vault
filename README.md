@@ -14,7 +14,7 @@ LIN Vault es una aplicación de autenticación móvil que simplifica el proceso 
 - **Soporte de servicios**: Todos los LIN Services puede ser iniciados con LIN Vault.
 
 
-## Características Principales
+## Otras imagenes
 
 ![Solicitud](./Img/Solicitud.jpg)
 
