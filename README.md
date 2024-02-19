@@ -1,5 +1,8 @@
 # LIN Vault
 
+![Home](./Img/Start.jpg)
+
+
 LIN Vault es una aplicación de autenticación móvil que simplifica el proceso de inicio de sesión y garantiza la seguridad de tus cuentas LIN. Nuestra aplicación permite una autenticación segura y rápida utilizando la huella digital en tus dispositivos móviles.
 
 ## Características Principales
