@@ -1,6 +1,6 @@
-# LIN Authenticator
+# LIN Vault
 
-LIN Authenticator es una aplicación de autenticación móvil que simplifica el proceso de inicio de sesión y garantiza la seguridad de tus cuentas LIN. Nuestra aplicación permite una autenticación segura y rápida utilizando la huella digital en tus dispositivos móviles.
+LIN Vault es una aplicación de autenticación móvil que simplifica el proceso de inicio de sesión y garantiza la seguridad de tus cuentas LIN. Nuestra aplicación permite una autenticación segura y rápida utilizando la huella digital en tus dispositivos móviles.
 
 ## Características Principales
 
@@ -8,6 +8,4 @@ LIN Authenticator es una aplicación de autenticación móvil que simplifica el 
 
 - **Seguridad Reforzada**: Protege tus cuentas y datos sensibles con una capa adicional de seguridad proporcionada por la autenticación biométrica.
 
-- **Gestión de Cuentas**: Agrega y administra múltiples cuentas en un solo lugar, lo que facilita la administración de tus identidades digitales.
-
-- **Soporte Multiplataforma**: LIN Authenticator es compatible con una amplia gama de servicios y aplicaciones en múltiples plataformas.
+- **Soporte de servicios**: Todos los LIN Services puede ser iniciados con LIN Vault.
