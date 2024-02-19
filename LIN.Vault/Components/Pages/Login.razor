@@ -1,0 +1,130 @@
+﻿@page "/"
+
+<PageTitle>Iniciar Sesión</PageTitle>
+
+
+
+
+<div class="flex items-center justify-center w-full h-dvh">
+
+
+    <div class="flex flex-col items-center justify-center w-full px-7">
+
+        <div class="mt-6 w-full max-w-96">
+
+            @if (isAnimation)
+            {
+                <div class="flex items-center justify-center">
+
+                    <LIN.Vault.Components.Elements.Success />
+
+                </div>
+            }
+            else if (isLogin)
+            {
+                <center>
+
+
+                    <LIN.Vault.Components.Elements.Loader></LIN.Vault.Components.Elements.Loader>
+                    <h5 class="mt-2 gilroy-bold text-sm text-gray-600 dark:text-gray-300">@LogMessage</h5>
+
+                    @if (cancelShow)
+                    {
+                        <label @onclick="CancelHi" class="hover:text-indigo-500 text-sm dark:text-gray-400">Cancelar</label>
+                    }
+
+                </center>
+            }
+            else
+            {
+
+
+                <div class="flex flex-col items-center justify-center mb-3">
+                    <img src="./favicon.png" class="h-10 w-10" />
+                    <label class="font-bold mt-1 dark:text-gray-200">LIN Vault</label>
+                </div>
+
+
+
+                @*Usuario*@
+                <div class="">
+                    <label for="email" class="mb-2 block text-sm font-medium text-gray-700  dark:text-gray-300">
+                        Usuario
+                    </label>
+                    <input @onkeypress="HideError" @bind="                                User" type="text" autocomplete="off" required=""
+                           class="block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm    dark:bg-[#2C2C2C] focus:dark:bg-[#323232] dark:border-zinc-700 dark:text-gray-100">
+                </div>
+
+
+                @if (!IsWithKey)
+                {
+                    @*Contraseña*@
+                    <div class="mt-3">
+                        <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Contraseña</label>
+                        <input @onkeypress="HideError" @bind="                                                Password" type="password" autocomplete="off"
+                               class="block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm dark:bg-[#2C2C2C] focus:dark:bg-[#323232] dark:border-zinc-700 dark:text-gray-100">
+                    </div>
+
+
+
+                }
+
+
+                <div class="@errorVisible mt-3">
+                    <label class="text-red-500 gilroy-bold text-sm">@ErrorMessage</label>
+                </div>
+
+                @*Boton*@
+                <div class="flex flex-row mt-5">
+
+
+                    <button @onclick="Start" class="group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-500 text-white hover:text-slate-100 hover:bg-blue-600 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600 w-full">
+                        <span>Iniciar <span aria-hidden="true">→</span></span>
+                    </button>
+
+                    <button @onclick="GotoLoginKey" href="/loginkey" type="button" class="text-white bg-blue-500 w-20 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center ml-2  flex justify-center">
+
+                        @if (IsWithKey)
+                        {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                            </svg>
+                        }
+                        else
+                        {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="" viewBox="0 0 16 16">
+                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z" />
+                            </svg>
+                        }
+
+
+                    </button>
+
+
+                </div>
+
+
+                <div class="flex flex-row justify-end items-end mt-3">
+                    <label @onclick="GoToForget" class="text-sm text-blue-600 hover:text-blue-800">Olvide mi contraseña</label>
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

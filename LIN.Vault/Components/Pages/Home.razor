@@ -1,0 +1,44 @@
+﻿@page "/home"
+
+
+@* Pantalla principal. *@
+<div class="flex flex-col items-center justify-center h-dvh w-full p-5">
+
+
+    @* Obtener la imagen de perfil. *@
+    @{
+        string url = $"data:image/png;base64,{Convert.ToBase64String(LIN.Access.Auth.SessionAuth.Instance.Account.Profile)}";
+    }
+
+    @* Perfil. *@
+    @if (LIN.Access.Auth.SessionAuth.Instance.Account.Profile.Length <= 0)
+    {
+        <div class="relative inline-flex items-center justify-center w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+            <span class="text-3xl text-gray-600 dark:text-gray-300">@(LIN.Vault.Services.StringExtensions.GetInitials(LIN.Access.Auth.SessionAuth.Instance.Account.Name))</span>
+        </div>
+    }
+    else
+    {
+        <img @onclick="CloseSession" class="w-20 h-20 rounded-full" src="@url" alt="Rounded avatar">
+    }
+
+    @* Bienvenida. *@
+    <label class="text-xl text-zinc-600 mt-2 dark:text-zinc-200">Bienvenido, <span class="text-black dark:text-white">@LIN.Access.Auth.SessionAuth.Instance.Account.Name</span></label>
+
+    @* Contador de llaves. *@
+    <div class="flex w-full p-3 rounded-xl bg-zinc-100 mt-6 dark:bg-[#2C2C2C]">
+        <img class="h-10 w-10" src="./img/key.png" />
+
+        <div class="flex flex-col ml-3">
+            <label class="font-bold dark:text-white">Hoy</label>
+            <label class="text-zinc-600 text-sm -mt-1 dark:text-zinc-400">Hoy se han usado <span class="font-bold">20</span> llaves</label>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+@* Drawer. *@
+<LIN.Vault.Components.Elements.Drawer @ref="Drawer" />
