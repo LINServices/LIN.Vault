@@ -12,12 +12,6 @@ public partial class Login
 
 
     /// <summary>
-    /// Obtiene si se esta log con una llave de acceso
-    /// </summary>
-    private bool IsWithKey { get; set; } = false;
-
-
-    /// <summary>
     /// Usuario
     /// </summary>
     private string User { get; set; } = "";
@@ -84,8 +78,7 @@ public partial class Login
         
         isLogin = true;
         StateHasChanged();
-
-        IsWithKey = false;
+;
         User = user.UserU;
         Password = user.Password;
 
@@ -150,28 +143,12 @@ public partial class Login
 
 
     /// <summary>
-    /// Muestra un mensaje
-    /// </summary>
-    void GotoLoginKey()
-    {
-        IsWithKey = !IsWithKey;
-        StateHasChanged();
-    }
-
-
-
-    /// <summary>
     /// Inicia sesión.
     /// </summary>
     async void Start()
     {
 
-        if (IsWithKey)
-        {
-            StartKey();
-            return;
-        }
-
+       
         HideControls();
         HideError();
 

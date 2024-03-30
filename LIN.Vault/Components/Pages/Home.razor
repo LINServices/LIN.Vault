@@ -13,8 +13,8 @@
     @* Perfil. *@
     @if (LIN.Access.Auth.SessionAuth.Instance.Account.Profile.Length <= 0)
     {
-        <div class="relative inline-flex items-center justify-center w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-            <span class="text-3xl text-gray-600 dark:text-gray-300">@(LIN.Vault.Services.StringExtensions.GetInitials(LIN.Access.Auth.SessionAuth.Instance.Account.Name))</span>
+        <div class="relative inline-flex items-center justify-center w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-zinc-800">
+            <span class="text-3xl text-gray-600 dark:text-gray-300">@(Global.Utilities.Strings.GetInitials(LIN.Access.Auth.SessionAuth.Instance.Account.Name))</span>
         </div>
     }
     else
@@ -24,9 +24,10 @@
 
     @* Bienvenida. *@
     <label class="text-xl text-zinc-600 mt-2 dark:text-zinc-200">Bienvenido, <span class="text-black dark:text-white">@LIN.Access.Auth.SessionAuth.Instance.Account.Name</span></label>
+    <label class="text-sm text-zinc-400 dark:text-zinc-400">@LIN.Access.Auth.SessionAuth.Instance.Account.Identity.Unique</label>
 
     @* Contador de llaves. *@
-    <div class="flex w-full p-3 rounded-xl bg-zinc-100 mt-6 dark:bg-[#2C2C2C]">
+    <div class="flex w-full p-3 rounded-xl bg-zinc-100 mt-6 dark:bg-zinc-800">
         <img class="h-10 w-10" src="./img/key.png" />
 
         <div class="flex flex-col ml-3">

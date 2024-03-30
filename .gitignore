@@ -398,3 +398,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/LIN.Vault/wwwroot/css/Tailwind.css
