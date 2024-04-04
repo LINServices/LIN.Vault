@@ -8,6 +8,8 @@ namespace LIN.Vault.Components.Elements;
 public partial class Drawer
 {
 
+    [Parameter]
+   public Action OnAccept { get; set; } = () => { };
 
 
     private bool isOk = false;
@@ -45,6 +47,8 @@ public partial class Drawer
 
         if (Passkey == null)
             return;
+
+        OnAccept();
 
         // Obtiene si hay sensor
         var isEnabled = await CrossFingerprint.Current.IsAvailableAsync();

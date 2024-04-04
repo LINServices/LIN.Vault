@@ -166,8 +166,8 @@ public partial class Login
         if (login.Response == Responses.Success)
         {
 
+            Home.PassKeyHub = Home.BuildHub();
             LocalDataBase.Data.UserDB database = new();
-
 
             await database.SaveUser(new() { ID = login.Sesion!.Account.Id, UserU = login.Sesion!.Account.Identity.Unique, Password = Password });
 
@@ -206,142 +206,8 @@ public partial class Login
 
 
 
-
-
-    Access.Auth.Hubs.PassKeyHub? hub;
-
-    /// <summary>
-    /// Inicia sesión
-    /// </summary>
-    async void StartKey()
-    {
-        cancelShow = false;
-        LogMessage = "Revisa tu dispositivo";
-        HideControls();
-        HideError();
-
-        // Sin información
-        if (User.Length <= 0)
-        {
-            ShowControls();
-            ShowError("Usuario requerido");
-            return;
-        }
-
-
-        // Suscribir al Hub
-        hub = new(User, "Q333Q", "");
-
-        await hub.Suscribe();
-        var reive = false;
-
-        hub.OnReceiveResponse += async (o, e) =>
-        {
-            await InvokeAsync(async () =>
-            {
-                reive = true;
-
-                switch (e.Status)
-                {
-                    case PassKeyStatus.Success:
-                        break;
-
-                    case PassKeyStatus.Rejected:
-                        ShowControls();
-                        ShowError("Passkey rechazada");
-                        return;
-
-                    case PassKeyStatus.Expired:
-                        ShowControls();
-                        ShowError("La sesión expiro");
-                        return;
-
-                    case PassKeyStatus.BlockedByOrg:
-                        ShowControls();
-                        ShowError("Tu organización no permite que inicies en esta aplicación.");
-                        return;
-
-                    default:
-                        ShowControls();
-                        ShowError("Hubo un error en Passkey");
-                        return;
-                }
-
-
-                isAnimation = true;
-                cancelShow = false;
-                LogMessage = "";
-                StateHasChanged();
-                await Task.Delay(5000);
-                isAnimation = false;
-                cancelShow = false;
-                LogMessage = "Iniciando Sesión";
-                StateHasChanged();
-
-                // Inicio de sesión
-                var login = await Access.Auth.SessionAuth.LoginWith(e.Token);
-
-                if (login.Response == Responses.Success)
-                {
-                    //Online.StaticHub.LoadHub();
-                    NavigationManager?.NavigateTo("/home");
-                    return;
-
-                }
-                else if (login.Response == Responses.InvalidPassword)
-                {
-                    ShowControls();
-                    ShowError("La sesión de passkey ha expirado");
-                }
-                else if (login.Response == Responses.NotExistAccount)
-                {
-                    ShowControls();
-                    ShowError($"No existe el usuario {User}");
-                }
-                else
-                {
-                    ShowControls();
-                    ShowError("Inténtalo de nuevo mas tarde");
-                }
-            });
-
-            // Hace el inicio
-
-
-
-        };
-
-        var intent = new Types.Cloud.Identity.Models.PassKeyModel()
-        {
-            User = User
-        };
-
-        hub.SendIntent(intent);
-
-        await Task.Delay(3000);
-        cancelShow = true;
-        StateHasChanged();
-
-        await Task.Delay(60000);
-
-        if (reive)
-            return;
-
-        hub.Disconnect();
-        hub = null;
-        ShowControls();
-        ShowError("La sesión de passkey ha expirado");
-
-    }
-
-
-
-
     void CancelHi()
     {
-        hub?.Disconnect();
-        hub = null;
-
         ShowControls();
         return;
     }

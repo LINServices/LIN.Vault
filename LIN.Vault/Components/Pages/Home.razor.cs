@@ -6,14 +6,6 @@ public partial class Home
 
 
     /// <summary>
-    /// Controlador de navegación.
-    /// </summary>
-    [Inject]
-    private NavigationManager? NavigationManager { get; set; }
-
-
-
-    /// <summary>
     /// Drawer.
     /// </summary>
     private Elements.Drawer? Drawer { get; set; }
@@ -83,6 +75,7 @@ public partial class Home
     {
 
         // Rellena los datos
+        _ = RefreshCount();
         var dataRes = await RefreshData();
 
         // Validación.
@@ -161,17 +154,42 @@ public partial class Home
 
 
 
+    int count = 0;
+
+    /// <summary>
+    /// Refrescar los datos desde el servicio.
+    /// </summary>
+    private async Task<bool> RefreshCount()
+    {
+
+        // Items
+        var items = await Access.Auth.Controllers.Intents.Count(LIN.Access.Auth.SessionAuth.Instance.AccountToken);
+
+        // Rellena los items
+        count = items.Model;
+        StateHasChanged();
+        return true;
+
+    }
+
+
+
 
     /// <summary>
     /// Cerrar la sesión.
     /// </summary>
     async void CloseSession()
     {
-        LIN.Access.Auth.SessionAuth.CloseSession();
-        LIN.LocalDataBase.Data.UserDB db = new();
-        await db.DeleteUsers();
-        PassKeyHub.Disconnect();
-        NavigationManager?.NavigateTo("/");
+
+        await this.InvokeAsync(async () =>
+        {
+            LIN.Access.Auth.SessionAuth.CloseSession();
+            LIN.LocalDataBase.Data.UserDB db = new();
+            await db.DeleteUsers();
+            PassKeyHub.Disconnect();
+            PassKeyHub = null!;
+            NavigationManager?.NavigateTo("/");
+        });
     }
 
 
@@ -188,5 +206,24 @@ public partial class Home
         return new(session.Account.Identity.Unique, string.Empty, session.AccountToken, true);
     }
 
+
+
+    /// <summary>
+    /// Aceptar.
+    /// </summary>
+    void OnSuccess()
+    {
+        count++;
+        StateHasChanged();
+    }
+
+
+    async void Close()
+    {
+        PassKeyHub = null;
+        LIN.Access.Auth.SessionAuth.CloseSession();
+        LocalDataBase.Data.UserDB database = new();
+        await database.DeleteUsers();
+    }
 
 }

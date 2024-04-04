@@ -1,4 +1,5 @@
 ﻿@page "/home"
+@inject NavigationManager NavigationManager
 
 
 @* Pantalla principal. *@
@@ -13,7 +14,7 @@
     @* Perfil. *@
     @if (LIN.Access.Auth.SessionAuth.Instance.Account.Profile.Length <= 0)
     {
-        <div class="relative inline-flex items-center justify-center w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-zinc-800">
+        <div @onclick="CloseSession" class="relative inline-flex items-center justify-center w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-zinc-800">
             <span class="text-3xl text-gray-600 dark:text-gray-300">@(Global.Utilities.Strings.GetInitials(LIN.Access.Auth.SessionAuth.Instance.Account.Name))</span>
         </div>
     }
@@ -28,18 +29,17 @@
 
     @* Contador de llaves. *@
     <div class="flex w-full p-3 rounded-xl bg-zinc-100 mt-6 dark:bg-zinc-800">
-        <img class="h-10 w-10" src="./img/key.png" />
 
+        <img class="h-10 w-10" src="./img/key.png" />
         <div class="flex flex-col ml-3">
             <label class="font-bold dark:text-white">Hoy</label>
-            <label class="text-zinc-600 text-sm -mt-1 dark:text-zinc-400">Hoy se han usado <span class="font-bold">20</span> llaves</label>
+            <label class="text-zinc-600 text-sm -mt-1 dark:text-zinc-400">Hoy se han usado <span class="font-bold">@count</span> llaves</label>
         </div>
 
     </div>
-
 
 </div>
 
 
 @* Drawer. *@
-<LIN.Vault.Components.Elements.Drawer @ref="Drawer" />
+<LIN.Vault.Components.Elements.Drawer @ref="Drawer" OnAccept="OnSuccess" />
