@@ -35,36 +35,44 @@ public partial class Login
     private string ErrorMessage { get; set; } = "";
 
 
-
-
-    private string errorVisible = "hidden";
-    private bool cancelShow = false;
-
-    private bool isLogin = false;
-    private bool isAnimation = false;
+    /// <summary>
+    /// Visibilidad del error.
+    /// </summary>
+    private bool ErrorVisible { get; set; } = false;
 
 
 
+    /// <summary>
+    /// Sección actual.
+    /// </summary>
+    private int Section { get; set; } = 3;
 
 
 
 
     /// <summary>
-    /// Evento al iniciar.
+    /// Constructor.
+    /// </summary>
+    public Login()
+    {
+    }
 
 
 
-
+    /// <summary>
+    /// Evento.
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
 
-        _= base.OnInitializedAsync();
 
-        if (LIN.Access.Auth.SessionAuth.IsOpen)
+        if (Access.Auth.SessionAuth.IsOpen)
         {
             NavigationManager?.NavigateTo("/home");
             return;
         }
+
+        _ = base.OnInitializedAsync();
 
 
         LocalDataBase.Data.UserDB database = new();
@@ -74,40 +82,36 @@ public partial class Login
 
         // Si no existe
         if (user == null)
+        {
+            UpdateSection(0);
             return;
-        
-        isLogin = true;
-        StateHasChanged();
-;
+        }
+
+
+        UpdateSection(3);
+
         User = user.UserU;
         Password = user.Password;
 
         Start();
-      
+
     }
-
-
 
 
 
     /// <summary>
-    /// Hace visibles los controles
+    /// Actualizar la sección.
     /// </summary>
-    void ShowControls()
+    /// <param name="section">Id de la sección</param>
+    private void UpdateSection(int section)
     {
-        isLogin = false;
-        StateHasChanged();
+        InvokeAsync(() =>
+        {
+            Section = section;
+            StateHasChanged();
+        });
     }
 
-
-    /// <summary>
-    /// Oculta los controles
-    /// </summary>
-    void HideControls()
-    {
-        isLogin = true;
-        StateHasChanged();
-    }
 
 
     /// <summary>
@@ -115,7 +119,7 @@ public partial class Login
     /// </summary>
     void HideError()
     {
-        errorVisible = "hidden";
+        ErrorVisible = false;
         StateHasChanged();
     }
 
@@ -126,8 +130,9 @@ public partial class Login
     /// </summary>
     void GoToForget()
     {
-        NavigationManager.NavigateTo("/login/forgetpassword");
+        NavigationManager?.NavigateTo("/login/forgetPassword");
     }
+
 
 
     /// <summary>
@@ -135,83 +140,89 @@ public partial class Login
     /// </summary>
     void ShowError(string message)
     {
-        errorVisible = "visible";
-        ErrorMessage = message;
-        StateHasChanged();
+        InvokeAsync(() =>
+        {
+            UpdateSection(0);
+            ErrorVisible = true;
+            ErrorMessage = message;
+            StateHasChanged();
+        });
     }
+
 
 
 
     /// <summary>
     /// Inicia sesión.
     /// </summary>
-    async void Start()
+    private async void Start()
     {
 
        
-        HideControls();
+        // Estado cargando.
+        UpdateSection(3);
+
+        // Ocultar el error.
         HideError();
 
-        // Sin información
+        // Validar parámetros.
         if (User.Length <= 0 || Password.Length <= 0)
         {
-            ShowControls();
             ShowError("Completa todos los campos");
             return;
         }
 
-        // Inicio de sesión
-        var login = await LIN.Access.Auth.SessionAuth.LoginWith(User, Password);
 
-        if (login.Response == Responses.Success)
+        // Iniciar sesión.
+        var (Session, Response) = await LIN.Access.Auth.SessionAuth.LoginWith(User, Password);
+
+        // Validar respuesta.
+        switch (Response)
         {
 
-            Home.PassKeyHub = Home.BuildHub();
-            LocalDataBase.Data.UserDB database = new();
+            // Correcto.
+            case Responses.Success:
 
-            await database.SaveUser(new() { ID = login.Sesion!.Account.Id, UserU = login.Sesion!.Account.Identity.Unique, Password = Password });
+                // Iniciar servicios de tiempo real.
+                Home.PassKeyHub = Home.BuildHub();
 
+                // Obtener local db.
+                LocalDataBase.Data.UserDB database = new();
 
-            //Online.StaticHub.LoadHub();
-            NavigationManager?.NavigateTo("/home");
-            return;
+                // Guardar información.
+                await database.SaveUser(new() { ID = Session!.Account.Id, UserU = Session!.Account.Identity.Unique, Password = Password });
+
+                // Navegar.
+                NavigationManager?.NavigateTo("/home");
+                return;
+
+            // Contraseña incorrecta.
+            case Responses.InvalidPassword:
+                ShowError("La contraseña es incorrecta");
+                break;
+
+            // No existe la cuenta.
+            case Responses.NotExistAccount:
+                ShowError($"No se encontró el usuario '{User}'");
+                break;
+
+            // Desautorizado por la organización.
+            case Responses.UnauthorizedByOrg:
+                ShowError($"Tu organización no permite que accedas a esta app");
+                break;
+
+            default:
+                ShowError("Inténtalo mas tarde");
+                break;
+
 
         }
-        else if (login.Response == Responses.InvalidPassword)
-        {
-            ShowControls();
-            ShowError("La contraseña es incorrecta");
-        }
-        else if (login.Response == Responses.NotExistAccount)
-        {
-            ShowControls();
-            ShowError($"No existe el usuario {User}");
-        }
-        else if (login.Response == Responses.UnauthorizedByOrg)
-        {
-            ShowControls();
-            ShowError($"Tu organización no permite que accedas a esta app");
-        }
-        else
-        {
-            ShowControls();
-            ShowError("Inténtalo mas tarde");
-        }
-
 
     }
 
 
 
-
-
-
-    void CancelHi()
-    {
-        ShowControls();
-        return;
-    }
-
+   
 
 
 
