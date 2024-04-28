@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
@@ -8,15 +8,23 @@
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/tailwind.css" />
     <link rel="stylesheet" href="css/tailwind.build.css" />
+    <link rel="stylesheet" href="css/loader.css" />
     <link rel="stylesheet" href="LIN.Vault.styles.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 
 <body class="select-none dark:bg-black">
 
+  
     <div class="status-bar-safe-area"></div>
 
-    <div id="app">Loading...</div>
+    <div id="app">
+
+        <div class="flex h-dvh w-full items-center justify-center">
+            <div class="loader"></div>
+        </div>
+
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
