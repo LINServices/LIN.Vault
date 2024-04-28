@@ -1,6 +1,10 @@
 ﻿using Plugin.Fingerprint.Abstractions;
 using Plugin.Fingerprint;
 using LIN.Vault.Components.Pages;
+using Microsoft.JSInterop;
+using LIN.Types.Cloud.Identity.Models;
+using Microsoft.AspNetCore.Components;
+using LIN.Types.Cloud.Identity.Enumerations;
 
 namespace LIN.Vault.Components.Elements;
 
@@ -38,7 +42,7 @@ public partial class Drawer
 
     public void Show()
     {
-        JS.InvokeVoidAsync("ShowDrawer", "drawer-bottom-example", "btn-close-panel");
+        JS.InvokeVoidAsync("ShowDrawer", "drawer-bottom-example",DotNetObjectReference.Create(this), "btn-close-panel");
     }
 
 

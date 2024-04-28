@@ -1,12 +1,18 @@
 ﻿// Abre un Drawer
-function ShowDrawer(id, ...idCloseBtn) {
+function ShowDrawer(id, dotnetHelper, ...idCloseBtn) {
 
     // Control
     const control = document.getElementById(id);
 
     const options = {
         placement: "bottom",
-        backdropClasses : 'bg-zinc-900 bg-opacity-50 fixed inset-0 z-30'
+        backdropClasses: 'bg-zinc-900 bg-opacity-50 fixed inset-0 z-30',
+        onHide: () => {
+            dotnetHelper.invokeMethodAsync("OnHide");
+        },
+        onShow: () => {
+            dotnetHelper.invokeMethodAsync("OnShow");
+        }
     };
 
 
@@ -79,7 +85,26 @@ function ShowModal(id, ...idCloseBtn) {
     const control = document.getElementById(id);
 
 
-    const drawer = new Modal(control);
+    // options with default values
+    const options = {
+        placement: 'center',
+        backdrop: 'dynamic',
+        backdropClasses:
+            'bg-zinc-900/50 dark:bg-black/80 fixed inset-0 z-40',
+        closable: true,
+        onHide: () => {
+            console.log('modal is hidden');
+        },
+        onShow: () => {
+            console.log('modal is shown');
+        },
+        onToggle: () => {
+            console.log('modal has been toggled');
+        },
+    };
+
+
+    const drawer = new Modal(control, options);
 
     // show the drawer
     drawer.show();
@@ -242,4 +267,9 @@ function ShopPop(target, trigger) {
     const popover = new Popover($targetEl, $triggerEl, options);
 
 
+}
+
+
+function BackLast() {
+    history.back();
 }

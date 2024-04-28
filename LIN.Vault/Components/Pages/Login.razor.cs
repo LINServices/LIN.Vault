@@ -1,4 +1,7 @@
-﻿namespace LIN.Vault.Components.Pages;
+﻿using LIN.Types.Responses;
+using Microsoft.AspNetCore.Components;
+
+namespace LIN.Vault.Components.Pages;
 
 
 public partial class Login

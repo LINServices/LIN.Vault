@@ -1,7 +1,4 @@
-﻿@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+﻿
 @font-face {
     font-family: 'Gilroy';
     src: url('../fonts/Gilroy-Medium.ttf') format('truetype'); /* La fuente por defecto ser� la negrita */
@@ -17,6 +14,9 @@
 
 html, body {
     font-family: 'Gilroy', sans-serif !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    overflow: hidden !important;
 }
 
 a, .btn-link {
