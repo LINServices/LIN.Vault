@@ -1,16 +1,14 @@
 <div align="center">
   <p align="center">
-    <img alt="vault logo" height="60" src="./Img/icono.png">
+    <img alt="vault logo" height="60" src="./assets/icono.png">
   </p>
   <p>LIN Vault es una aplicación de autenticación móvil que simplifica el proceso de inicio de sesión y garantiza la seguridad de tus cuentas LIN. Nuestra aplicación permite una autenticación segura y rápida utilizando la huella digital en tus dispositivos móviles.</p>
  <p align="center">
-    <img alt="heyform logo" height="20" src="./Img/android.png">
+    <img alt="android logo" height="20" src="./assets/android.png">
   </p>
 </div>
 
 # LIN Vault
-
-<img alt="heyform logo" height="500" src="./Img/Start.jpg">
 
 ## Características Principales
 
@@ -28,9 +26,15 @@
 - HTML, CSS y JavaScript.
 - Tailwind CSS.
 
-## Otras imagenes
+## Capturas
 
-<img alt="heyform logo" height="500" src="./Img/Solicitud.jpg">
+<img alt="android logo" height="30" src="./assets/android.png">
+
+### Modo Claro
+![alt text](./assets/light.png)
+
+### Modo Oscuro
+![alt text](./assets/dark.png)
 
 
 # Código Fuente
