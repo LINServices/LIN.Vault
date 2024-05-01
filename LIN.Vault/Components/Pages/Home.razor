@@ -3,7 +3,7 @@
 
 
 @* Pantalla principal. *@
-<div class="flex flex-col items-center justify-center h-dvh w-full p-5">
+<div class="flex h-dvh w-full flex-col items-center justify-center p-5">
 
 
     @* Obtener la imagen de perfil. *@
@@ -12,28 +12,19 @@
     }
 
     @* Perfil. *@
-    @if (LIN.Access.Auth.SessionAuth.Instance.Account.Profile.Length <= 0)
-    {
-        <div @onclick="CloseSession" class="relative inline-flex items-center justify-center w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-zinc-800">
-            <span class="text-3xl text-gray-600 dark:text-gray-300">@(Global.Utilities.Strings.GetInitials(LIN.Access.Auth.SessionAuth.Instance.Account.Name))</span>
-        </div>
-    }
-    else
-    {
-        <img @onclick="CloseSession" class="w-20 h-20 rounded-full" src="@url" alt="Rounded avatar">
-    }
+    <LIN.Vault.Components.Elements.PopSession OnClick="CloseSession" />
 
     @* Bienvenida. *@
-    <label class="text-xl text-zinc-600 mt-2 dark:text-zinc-200">Bienvenido, <span class="text-black dark:text-white">@LIN.Access.Auth.SessionAuth.Instance.Account.Name</span></label>
+    <label class="mt-2 text-xl text-zinc-600 dark:text-zinc-200">Bienvenido, <span class="text-black dark:text-white">@LIN.Access.Auth.SessionAuth.Instance.Account.Name</span></label>
     <label class="text-sm text-zinc-400 dark:text-zinc-400">@LIN.Access.Auth.SessionAuth.Instance.Account.Identity.Unique</label>
 
     @* Contador de llaves. *@
-    <div class="flex w-full p-3 rounded-xl bg-zinc-100 mt-6 dark:bg-zinc-800">
+    <div class="mt-6 flex w-full rounded-xl bg-zinc-100 p-3 dark:bg-zinc-800">
 
         <img class="h-10 w-10" src="./img/key.png" />
-        <div class="flex flex-col ml-3">
+        <div class="ml-3 flex flex-col">
             <label class="font-bold dark:text-white">Hoy</label>
-            <label class="text-zinc-600 text-sm -mt-1 dark:text-zinc-400">Hoy se han usado <span class="font-bold">@count</span> llaves</label>
+            <label class="-mt-1 text-sm text-zinc-600 dark:text-zinc-400">Hoy se han usado <span class="font-bold">@count</span> llaves</label>
         </div>
 
     </div>
