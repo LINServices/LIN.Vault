@@ -30,7 +30,6 @@
 
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
-        <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
         <!-- Custom Fonts -->
         <MauiFont Include="Resources\Fonts\*" />
@@ -50,9 +49,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-        <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="8.0.21" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
         <PackageReference Include="Plugin.Fingerprint" Version="2.1.5" />
     </ItemGroup>
@@ -62,6 +61,11 @@
 	  <ProjectReference Include="..\..\..\Tipos\LIN.Types.Cloud.Identity\LIN.Types.Cloud.Identity.csproj" />
 	  <ProjectReference Include="..\..\..\Tipos\LIN.Types\LIN.Types.csproj" />
 	  <ProjectReference Include="..\..\LIN\LIN.LocalDataBase\LIN.LocalDataBase.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Images\" />
+	  <Folder Include="Resources\Raw\" />
 	</ItemGroup>
 
 </Project>

@@ -222,12 +222,5 @@ public partial class Home
     }
 
 
-    async void Close()
-    {
-        PassKeyHub = null;
-        LIN.Access.Auth.SessionAuth.CloseSession();
-        LocalDataBase.Data.UserDB database = new();
-        await database.DeleteUsers();
-    }
 
 }
