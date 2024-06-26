@@ -66,8 +66,7 @@ public partial class Drawer
             // Resultado
             var result = await CrossFingerprint.Current.AuthenticateAsync(request);
 
-
-            // Autenticacion correcta
+            // Autenticación correcta
             if (result.Authenticated)
             {
                 try

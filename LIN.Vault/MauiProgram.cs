@@ -33,7 +33,7 @@ public static class MauiProgram
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
         return builder.Build();
@@ -64,7 +64,7 @@ public static class MauiProgram
         {
             currentActivity.Window.SetStatusBarColor(new(0, 0, 0));
             currentActivity.Window.SetNavigationBarColor(new(0, 0, 0));
-           currentActivity.Window.DecorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.Visible;
+            currentActivity.Window.DecorView.SystemUiVisibility = (StatusBarVisibility)SystemUiFlags.Visible;
         }
 #endif
     }

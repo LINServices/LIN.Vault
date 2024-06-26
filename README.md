@@ -39,7 +39,7 @@
 
 # Código Fuente
 
-Puedes revisar el código fuente de LIN Inventory, sin embargo no puedes realizar ninguna bifurcación al mismo o venderlo.
+Puedes revisar el código fuente de LIN Vault, sin embargo no puedes realizar ninguna bifurcación al mismo o venderlo.
 
 
 
