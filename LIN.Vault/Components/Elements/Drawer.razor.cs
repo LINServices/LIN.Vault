@@ -1,10 +1,10 @@
-﻿using Plugin.Fingerprint.Abstractions;
-using Plugin.Fingerprint;
-using LIN.Vault.Components.Pages;
-using Microsoft.JSInterop;
+﻿using LIN.Types.Cloud.Identity.Enumerations;
 using LIN.Types.Cloud.Identity.Models;
+using LIN.Vault.Components.Pages;
 using Microsoft.AspNetCore.Components;
-using LIN.Types.Cloud.Identity.Enumerations;
+using Microsoft.JSInterop;
+using Plugin.Fingerprint;
+using Plugin.Fingerprint.Abstractions;
 
 namespace LIN.Vault.Components.Elements;
 
@@ -12,8 +12,11 @@ namespace LIN.Vault.Components.Elements;
 public partial class Drawer
 {
 
+    /// <summary>
+    /// Al aceptar.
+    /// </summary>
     [Parameter]
-   public Action OnAccept { get; set; } = () => { };
+    public Action OnAccept { get; set; } = () => { };
 
 
     private bool isOk = false;
@@ -42,7 +45,7 @@ public partial class Drawer
 
     public void Show()
     {
-        JS.InvokeVoidAsync("ShowDrawer", "drawer-bottom-example",DotNetObjectReference.Create(this), "btn-close-panel");
+        JS.InvokeVoidAsync("ShowDrawer", "drawer-bottom-example", DotNetObjectReference.Create(this), "btn-close-panel");
     }
 
 
@@ -71,14 +74,7 @@ public partial class Drawer
             {
                 try
                 {
-                    Passkey.Status = PassKeyStatus.Success;
-                    Passkey.Token = Access.Auth.SessionAuth.Instance.AccountToken;
-                    Home.PassKeyHub.SendStatus(Passkey);
-
-                    isOk = true;
-                    StateHasChanged();
-                    await Task.Delay(4000);
-
+                    await SuccessAuth();
                     return;
                 }
                 catch
@@ -87,28 +83,56 @@ public partial class Drawer
             }
             else
             {
-               // await DisplayAlert("Invalido", "Inténtalo de nuevo", "Ok");
+                // await DisplayAlert("Invalido", "Inténtalo de nuevo", "Ok");
             }
 
         }
         else
         {
 
-           // await DisplayAlert("Biometría desactivada", "Este dispositivo no cuenta con sensores de biometría o se encuentran desactivados.", "Ok");
+            // Autenticación con contraseña.
+            var request = new AuthenticationRequestConfiguration
+            ("LIN Passkey", "Confirma tu contraseña")
+            {
+                FallbackTitle = "Use PIN",
+                AllowAlternativeAuthentication = true,
+            };
 
+            var result = await CrossFingerprint.Current.AuthenticateAsync(request);
 
+            if (result.Authenticated)
+            {
+                await SuccessAuth();
+            }
         }
     }
+
+
+
+    private async Task SuccessAuth()
+    {
+        Passkey.Status = PassKeyStatus.Success;
+        Passkey.Token = Access.Auth.SessionAuth.Instance.AccountToken;
+        Home.PassKeyHub.SendStatus(Passkey);
+        isOk = true;
+        StateHasChanged();
+        await Task.Delay(4000);
+
+    }
+
+
+
+
+
+
 
 
     private void OnClose()
     {
         try
         {
-
             Passkey.Status = PassKeyStatus.Rejected;
             Passkey.Token = "";
-
             Home.PassKeyHub.SendStatus(Passkey);
         }
         catch

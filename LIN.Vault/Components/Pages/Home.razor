@@ -21,6 +21,13 @@
     <label class="mt-2 text-xl text-zinc-600 dark:text-zinc-200">Bienvenido, <span class="text-black dark:text-white">@LIN.Access.Auth.SessionAuth.Instance.Account.Name</span></label>
     <label class="text-sm text-zinc-400 dark:text-zinc-400">@LIN.Access.Auth.SessionAuth.Instance.Account.Identity.Unique</label>
 
+
+    @if (!IsAvaible)
+        {
+            <img src="./img/fingerprint.png" class="h-4 w-4" />
+        }
+
+
     @* Contador de llaves. *@
     <div class="mt-6 flex w-full rounded-xl bg-zinc-100 p-3 dark:bg-zinc-800">
 

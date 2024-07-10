@@ -1,12 +1,19 @@
 ﻿using LIN.Access.Auth.Hubs;
 using LIN.Types.Cloud.Identity.Models;
 using LIN.Types.Responses;
+using Plugin.Fingerprint;
 
 namespace LIN.Vault.Components.Pages;
 
 
 public partial class Home
 {
+
+
+    /// <summary>
+    /// Es disponible.
+    /// </summary>
+    public bool IsAvaible { get; set; } = true;
 
 
     /// <summary>
@@ -91,8 +98,19 @@ public partial class Home
 
         // Renderizar.
         Render();
+
+        // Cargar status.
+        LoadStatus();
     }
 
+
+
+    private async void LoadStatus()
+    {
+        var isAvaible = await CrossFingerprint.Current.IsAvailableAsync();
+        IsAvaible = isAvaible;
+        StateHasChanged();
+    }
 
 
     /// <summary>
