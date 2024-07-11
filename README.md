@@ -12,13 +12,12 @@
 
 ## Características Principales
 
-- **Autenticación Rápida**: Inicia sesión en tus cuentas favoritas de manera rápida y sencilla utilizando tu huella digital.
+- **Autenticación Rápida**: Inicia sesión en tus cuentas favoritas de manera rápida y sencilla utilizando tu huella digital o la contraseña de tu dispositivo.
 
 - **Seguridad Reforzada**: Protege tus cuentas y datos sensibles con una capa adicional de seguridad proporcionada por la autenticación biométrica.
 
 - **Soporte de servicios**: Todos los LIN Services puede ser iniciados con LIN Vault.
 
-- 
 ## Tecnologías
 
 - .NET 8.
