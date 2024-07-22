@@ -3,10 +3,10 @@
 
 
 @* Pantalla principal. *@
-<div class="flex w-full justify-center">
+<div class="flex h-screen w-full flex-col justify-center dl:flex-row">
 
 
-    <div class="flex h-dvh w-full max-w-lg flex-col items-center justify-center p-5">
+    <div class="flex w-full max-w-lg flex-col items-center justify-center p-5">
 
 
         @* Obtener la imagen de perfil. *@
@@ -21,7 +21,6 @@
         <label class="mt-2 text-xl text-zinc-600 dark:text-zinc-200">Bienvenido, <span class="text-black dark:text-white">@LIN.Access.Auth.SessionAuth.Instance.Account.Name</span></label>
         <label class="text-sm text-zinc-400 dark:text-zinc-400">@LIN.Access.Auth.SessionAuth.Instance.Account.Identity.Unique</label>
 
-
         @if (!IsAvaible)
         {
             <div class="mt-3 flex items-center justify-center gap-2">
@@ -30,15 +29,25 @@
             </div>
         }
 
-
         @* Contador de llaves. *@
         <div class="mt-6 flex w-full rounded-xl bg-zinc-100 p-3 dark:bg-zinc-800">
-
             <img class="h-10 w-10" src="./img/key.png" />
             <div class="ml-3 flex flex-col">
                 <label class="font-bold dark:text-white">Hoy</label>
                 <label class="-mt-1 text-sm text-zinc-600 dark:text-zinc-400">Hoy se han usado <span class="font-bold">@count</span> llaves</label>
             </div>
+        </div>
+
+    </div>
+    
+
+    <div class="h-full w-full overflow-y-scroll p-5">
+
+        <label class="mb-4 text-xl font-bold dark:text-white">Mis Cuentas</label>
+
+        <div class="mt-3 w-full">
+           
+            <LIN.Vault.Components.Elements.OTPComponent />
 
         </div>
 

@@ -1,0 +1,20 @@
+﻿
+
+@code{
+    [Parameter]
+    public string AppName { get; set; } = "Github";
+
+    [Parameter]
+    public string Otp { get; set; } = "11111";
+
+}
+
+
+<div class="flex w-full items-center rounded-xl bg-green-500 bg-zinc-100 p-3 dark:bg-zinc-800">
+    <img src="./img/key.png" class="h-7 w-7" />
+    <div class="ml-3 flex flex-col justify-center">
+        <p class="text-base font-bold dark:text-white">@AppName</p>
+        <p class="-mt-1 text-base dark:text-white">@Otp</p>
+    </div>
+
+</div>

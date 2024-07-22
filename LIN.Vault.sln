@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIN.Vault", "LIN.Vault\LIN.Vault.csproj", "{E4EE2470-E7BB-4C9C-912A-9A6A21E754AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.Vault", "LIN.Vault\LIN.Vault.csproj", "{E4EE2470-E7BB-4C9C-912A-9A6A21E754AC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.Types", "..\..\Tipos\LIN.Types\LIN.Types.csproj", "{8B5ED257-DEE2-4058-8EA1-69E8F46CC50C}"
 EndProject
