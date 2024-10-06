@@ -1,6 +1,7 @@
 ﻿using LIN.Access.Auth.Hubs;
 using LIN.Types.Cloud.Identity.Models;
 using LIN.Types.Responses;
+using Org.Apache.Http.Conn;
 using Plugin.Fingerprint;
 
 namespace LIN.Vault.Components.Pages;
@@ -239,6 +240,10 @@ public partial class Home
         StateHasChanged();
     }
 
+    void A()
+    {
+        App.Current!.MainPage!.Navigation.PushAsync(new Scanner());
+    }
 
 
 }

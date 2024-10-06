@@ -19,8 +19,6 @@
 
         }
 
-
-
         /// <summary>
         /// Evento al abrir la app.
         /// </summary>

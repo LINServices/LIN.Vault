@@ -1,9 +1,14 @@
 ﻿#if ANDROID
 using Android.Views;
+using CommunityToolkit.Maui;
+
 #endif
 using Microsoft.Extensions.Logging;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
+using ZXing.Net.Maui;
+using ZXing.Net.Maui.Controls;
+using LIN.Access.Auth;
 
 namespace LIN.Vault;
 
@@ -21,12 +26,12 @@ public static class MauiProgram
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-            });
+            })
+            .UseMauiCommunityToolkit()
+            .UseBarcodeReader();
 
         builder.Services.AddMauiBlazorWebView();
-
-        LIN.Access.Auth.Build.SetAuth("DEFAULT");
-        LIN.Access.Auth.Build.Init();
+        builder.Services.AddAuthenticationService();
 
         // Lector de huellas.
         builder.Services.AddSingleton(typeof(IFingerprint), CrossFingerprint.Current);

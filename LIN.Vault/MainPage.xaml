@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:LIN.Vault"
              x:Class="LIN.Vault.MainPage"
+             
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             xmlns:zxingoptions="clr-namespace:ZXing.Net.Maui;assembly=ZXing.Net.MAUI"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
     <BlazorWebView x:Name="blazorWebView" HostPage="wwwroot/index.html">
@@ -10,5 +13,5 @@
             <RootComponent Selector="#app" ComponentType="{x:Type local:Components.Routes}" />
         </BlazorWebView.RootComponents>
     </BlazorWebView>
-
+    
 </ContentPage>

@@ -1,9 +1,9 @@
 ﻿@page "/home"
 @inject NavigationManager NavigationManager
-
+@inject IJSRuntime JS
 
 @* Pantalla principal. *@
-<div class="flex h-screen w-full flex-col justify-center dl:flex-row">
+<div class="flex h-screen w-full flex-col items-center justify-center dl:flex-row">
 
 
     <div class="flex w-full max-w-lg flex-col items-center justify-center p-5">
@@ -41,12 +41,13 @@
     </div>
     
 
-    <div class="h-full w-full overflow-y-scroll p-5">
+    <div class="w-full overflow-y-scroll rounded-t-lg p-5 dl:h-full">
 
         <label class="mb-4 text-xl font-bold dark:text-white">Mis Cuentas</label>
 
         <div class="mt-3 w-full">
            
+            <button @onclick="A">QR</button>
             <LIN.Vault.Components.Elements.OTPComponent />
 
         </div>
