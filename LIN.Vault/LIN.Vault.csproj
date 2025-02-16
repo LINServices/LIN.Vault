@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0-android</TargetFrameworks>
+        <TargetFrameworks>net9.0-android</TargetFrameworks>
 
         <OutputType>Exe</OutputType>
         <RootNamespace>LIN.Vault</RootNamespace>
@@ -47,15 +47,21 @@
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
 		<MauiIcon Include="Resources\AppIcon\appiconwin.svg" ForegroundFile="Resources\AppIcon\appiconfgwin.svg" Color="#00FF0000" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Content Remove="appsettings.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Resources\Raw\appsettings.json" />
+	</ItemGroup>
 
 	<ItemGroup>
-        <PackageReference Include="LIN.Access.Auth" Version="1.3.4" />
-        <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.92" />
-        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.92" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="8.0.92" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+        <PackageReference Include="LIN.Access.Auth" Version="1.7.0" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.30" />
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.30" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.30" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.1" />
         <PackageReference Include="Plugin.Fingerprint" Version="2.1.5" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="11.0.0" />
 		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
     </ItemGroup>
 
@@ -65,7 +71,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Resources\Images\" />
-	  <Folder Include="Resources\Raw\" />
 	</ItemGroup>
 
 	<ItemGroup>

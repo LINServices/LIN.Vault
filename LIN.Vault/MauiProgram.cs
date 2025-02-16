@@ -9,6 +9,7 @@ using Plugin.Fingerprint.Abstractions;
 using ZXing.Net.Maui;
 using ZXing.Net.Maui.Controls;
 using LIN.Access.Auth;
+using Microsoft.Extensions.Configuration;
 
 namespace LIN.Vault;
 
@@ -30,8 +31,11 @@ public static class MauiProgram
             .UseMauiCommunityToolkit()
             .UseBarcodeReader();
 
+        var config = Configuracion.LoadConfiguration();
+        builder.Configuration.AddConfiguration(config);
+
         builder.Services.AddMauiBlazorWebView();
-        builder.Services.AddAuthenticationService();
+        builder.Services.AddAuthenticationService(app: config["app:key"]);
 
         // Lector de huellas.
         builder.Services.AddSingleton(typeof(IFingerprint), CrossFingerprint.Current);
