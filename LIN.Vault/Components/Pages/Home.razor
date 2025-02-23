@@ -11,7 +11,7 @@
 
         @* Obtener la imagen de perfil. *@
         @{
-            string url = $"data:image/png;base64,{Convert.ToBase64String(LIN.Access.Auth.SessionAuth.Instance.Account.Profile)}";
+            string url = LIN.Access.Auth.SessionAuth.Instance.Account.Profile;
         }
 
         @* Perfil. *@
