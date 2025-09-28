@@ -56,14 +56,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-        <PackageReference Include="LIN.Access.Auth" Version="4.1.0" />
-        <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.60" />
-        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.60" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.60" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4" />
+        <PackageReference Include="LIN.Access.Auth" Version="2025.9.21" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.110" />
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.110" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.110" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.9" />
         <PackageReference Include="Plugin.Fingerprint" Version="2.1.5" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
-		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="12.2.0" />
+		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.5.2" />
     </ItemGroup>
 
 	<ItemGroup>
