@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.Maui.Controls"
+             x:Class="LIN.Authenticator.ScannerPage"
+             Title="Escanear QR"
+             BackgroundColor="Black"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <zxing:CameraBarcodeReaderView x:Name="barcodeReader"
+                                      BarcodesDetected="BarcodesDetected" />
+
+        <!-- Overlay -->
+        <Border Stroke="White"
+                StrokeThickness="2"
+                StrokeDashArray="5,5"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HeightRequest="250"
+                WidthRequest="250"
+                BackgroundColor="Transparent"
+                InputTransparent="True" />
+
+        <Button Text="Cancelar"
+                Clicked="OnCancelClicked"
+                VerticalOptions="End"
+                Margin="20"
+                BackgroundColor="#80000000"
+                TextColor="White"/>
+    </Grid>
+
+</ContentPage>

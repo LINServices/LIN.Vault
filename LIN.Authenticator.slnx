@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../LIN/LIN.LocalDataBase/LIN.LocalDataBase.csproj" />
+  <Project Path="LIN.Authenticator/LIN.Authenticator.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

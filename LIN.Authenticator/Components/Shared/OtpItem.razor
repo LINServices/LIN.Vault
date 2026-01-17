@@ -1,0 +1,39 @@
+@using LIN.Authenticator.Models
+@using LIN.Authenticator.Services
+
+<div class="mb-3 flex w-full flex-col rounded-xl bg-zinc-100 p-4 dark:bg-zinc-800">
+    <div class="flex items-center justify-between">
+        <label class="text-xs font-bold text-zinc-500 uppercase">@Account.Issuer</label>
+        <button @onclick="OnDelete" class="text-zinc-400 hover:text-red-500">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+        </button>
+    </div>
+    <label class="text-lg font-semibold dark:text-white">@Account.AccountName</label>
+    
+    <div class="mt-2 flex items-center gap-4">
+        <label class="text-3xl font-mono font-bold tracking-widest text-blue-600 dark:text-blue-400">@Account.CurrentOtp</label>
+        <div class="relative h-6 w-6">
+            <svg class="h-full w-full rotate-[-90deg]">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="transparent" class="text-zinc-200 dark:text-zinc-700" />
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="transparent" 
+                        stroke-dasharray="62.83" 
+                        stroke-dashoffset="@dashOffset"
+                        class="text-blue-500 transition-all duration-1000" />
+            </svg>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public AccountModel Account { get; set; } = null!;
+    [Parameter] public EventCallback<AccountModel> OnDeleteAccount { get; set; }
+
+    private double dashOffset => 62.83 * (1 - (Account.RemainingSeconds / Account.Period));
+
+    private async Task OnDelete()
+    {
+        await OnDeleteAccount.InvokeAsync(Account);
+    }
+}

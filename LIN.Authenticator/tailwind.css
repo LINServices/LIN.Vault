@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@source "../**/*.{html,razor,js,cs}";
+
+
+@theme {
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-dl: 910px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+    --color-current-50: #eff5ff;
+    --color-current-100: #dbe8fe;
+    --color-current-200: #bfd7fe;
+    --color-current-300: #93bbfd;
+    --color-current-400: #609afa;
+    --color-current-500: #3b82f6;
+    --color-current-600: #2570eb;
+    --color-current-700: #1d64d8;
+    --color-current-800: #1e55af;
+    --color-current-900: #1e478a;
+    --color-current-950: #172e54;
+}
