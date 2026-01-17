@@ -401,3 +401,4 @@ FodyWeavers.xsd
 /LIN.Vault/wwwroot/css/tailwind.build.css
 /LIN.Vault/appsettings.json
 /LIN.Vault/Resources/Raw/appsettings.json
+/LIN.Authenticator/wwwroot/css/tailwind.css
